@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"slices"
 
-	"github.com/c2micro/c2msrv/cmd/c2m/internal/cmd"
-	"github.com/c2micro/c2msrv/cmd/c2m/internal/cmd/run"
-	"github.com/c2micro/c2msrv/cmd/c2m/internal/cmd/version"
+	"github.com/c2micro/c2msrv/cmd/c2msrv/internal/cmd"
+	"github.com/c2micro/c2msrv/cmd/c2msrv/internal/cmd/run"
+	"github.com/c2micro/c2msrv/cmd/c2msrv/internal/cmd/version"
 
 	_ "github.com/c2micro/c2msrv/internal/ent/runtime"
 	"github.com/c2micro/c2msrv/internal/zapcfg"
