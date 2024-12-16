@@ -38,7 +38,7 @@ c2msrv-race:
 .PHONY: dep-shared
 dep-shared:
 	@echo "Update shared components..."
-	@go get -u github.com/c2micro/c2mshr/ && go mod tidy && go mod vendor
+	@export GOPRIVATE="github.com/c2micro" && go get -u github.com/c2micro/c2mshr && go mod tidy && go mod vendor
 
 .PHONY: ent-gen
 ent-gen:

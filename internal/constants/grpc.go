@@ -12,12 +12,6 @@ const (
 	GrpcKeepaliveTimeout = time.Second * 5
 	// время, после которого будет принудительно закрыто соединение
 	GrpcMaxConnAgeGrace = time.Second * 10
-	// название заголовка для авторизации листенера
-	GrpcAuthListenerHeader = "X-Access-Token"
-	// название заголовка для авторизации оператора
-	GrpcAuthOperatorHeader = "Y-Access-Token"
-	// название заголовка для авторизации на management сервере
-	GrpcAuthManagementHeader = "Z-Access-Token"
 	// минимальная версия TLS
 	GrpcTlsMinVersion = tls.VersionTLS12
 	// временная дельта для отправки heartbeat'ов оператору

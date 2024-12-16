@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/c2micro/c2mshr/defaults"
 	operatorv1 "github.com/c2micro/c2mshr/proto/gen/operator/v1"
-	"github.com/c2micro/c2msrv/internal/constants"
 	"github.com/c2micro/c2msrv/internal/ent"
 	"github.com/c2micro/c2msrv/internal/ent/listener"
 	"github.com/c2micro/c2msrv/internal/ent/operator"
@@ -37,7 +37,7 @@ func UnaryServerInterceptorListener(db *ent.ListenerClient) grpc.UnaryServerInte
 		if !ok {
 			return nil, status.Error(codes.Internal, "missing metadata")
 		}
-		tokens := meta.Get(constants.GrpcAuthListenerHeader)
+		tokens := meta.Get(defaults.GrpcAuthListenerHeader)
 		if len(tokens) != 1 {
 			return nil, status.Error(codes.Unauthenticated, "unauthenticated request")
 		}
@@ -73,7 +73,7 @@ func StreamServerInterceptorListener(db *ent.ListenerClient) grpc.StreamServerIn
 		if !ok {
 			return status.Error(codes.Internal, "missing metadata")
 		}
-		tokens := meta.Get(constants.GrpcAuthListenerHeader)
+		tokens := meta.Get(defaults.GrpcAuthListenerHeader)
 		if len(tokens) != 1 {
 			return status.Error(codes.Unauthenticated, "unauthenticated request")
 		}
@@ -118,7 +118,7 @@ func UnaryServerInterceptorOperator(db *ent.OperatorClient) grpc.UnaryServerInte
 		if !ok {
 			return nil, status.Error(codes.Internal, "missing metadata")
 		}
-		tokens := meta.Get(constants.GrpcAuthOperatorHeader)
+		tokens := meta.Get(defaults.GrpcAuthOperatorHeader)
 		if len(tokens) != 1 {
 			return nil, status.Error(codes.Unauthenticated, "unauthenticated request")
 		}
@@ -154,7 +154,7 @@ func StreamServerInterceptorOperator(db *ent.OperatorClient) grpc.StreamServerIn
 		if !ok {
 			return status.Error(codes.Internal, "missing metadata")
 		}
-		tokens := meta.Get(constants.GrpcAuthOperatorHeader)
+		tokens := meta.Get(defaults.GrpcAuthOperatorHeader)
 		if len(tokens) != 1 {
 			return status.Error(codes.Unauthenticated, "unauthenticated request")
 		}
@@ -190,7 +190,7 @@ func UnaryServerInterceptorManagement(t string) grpc.UnaryServerInterceptor {
 		if !ok {
 			return nil, status.Error(codes.Internal, "missing metadata")
 		}
-		tokens := meta.Get(constants.GrpcAuthManagementHeader)
+		tokens := meta.Get(defaults.GrpcAuthManagementHeader)
 		if len(tokens) != 1 {
 			return nil, status.Error(codes.Unauthenticated, "unauthenticated request")
 		}
@@ -209,7 +209,7 @@ func StreamServerInterceptorManagement(t string) grpc.StreamServerInterceptor {
 		if !ok {
 			return status.Error(codes.Internal, "missing metadata")
 		}
-		tokens := meta.Get(constants.GrpcAuthManagementHeader)
+		tokens := meta.Get(defaults.GrpcAuthManagementHeader)
 		if len(tokens) != 1 {
 			return status.Error(codes.Unauthenticated, "unauthenticated request")
 		}
