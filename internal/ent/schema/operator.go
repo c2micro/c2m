@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/defaults"
+	"github.com/c2micro/c2msrv/internal/constants"
 )
 
 // Operator объявление схемы Operator
@@ -38,7 +38,7 @@ func (Operator) Fields() []ent.Field {
 			Optional().
 			Comment("access token for operator"),
 		field.Uint32("color").
-			Default(defaults.DefaultColor).
+			Default(constants.DefaultColor).
 			Comment("color of entity"),
 		field.Time("last").
 			Default(func() time.Time {

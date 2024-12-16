@@ -11,6 +11,10 @@ BUILD=$(shell git rev-parse HEAD)
 LDFLAGS=-ldflags="-s -w -X github.com/c2micro/c2msrv/internal/version.gitCommit=${BUILD} -X github.com/c2micro/c2msrv/internal/version.gitVersion=${VERSION}"
 TAGS=sqlite_foreign_keys
 
+.PHONY: run-local
+run-local: c2msrv
+	@bin/c2msrv --config config/config.yml -d run
+
 .PHONY: c2msrv
 c2msrv:
 	@mkdir -p ${BIN_DIR}

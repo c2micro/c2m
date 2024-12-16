@@ -8,8 +8,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
-	c "github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/defaults"
+	"github.com/c2micro/c2mshr/defaults"
 )
 
 // Message объявление схемы Message
@@ -33,10 +32,10 @@ func (Message) Fields() []ent.Field {
 		field.Int("gid").
 			Comment("id of task group"),
 		field.Enum("type").
-			GoType(c.TaskMessage(0)).
+			GoType(defaults.TaskMessage(0)).
 			Comment("type of message"),
 		field.String("message").
-			MaxLen(defaults.MessageMaxLen).
+			MaxLen(defaults.TaskGroupMessageMaxLength).
 			Comment("message itself"),
 		field.Time("created_at").
 			Default(time.Now).

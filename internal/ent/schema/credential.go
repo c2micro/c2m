@@ -5,7 +5,8 @@ import (
 	"entgo.io/ent/dialect/entsql"
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/defaults"
+	"github.com/c2micro/c2mshr/defaults"
+	"github.com/c2micro/c2msrv/internal/constants"
 )
 
 // Credential объявление схемы Credential
@@ -27,27 +28,27 @@ func (Credential) Annotations() []schema.Annotation {
 func (Credential) Fields() []ent.Field {
 	return []ent.Field{
 		field.String("username").
-			MaxLen(defaults.CredentialMaxLenUsername).
+			MaxLen(defaults.CredentialUsernameMaxLength).
 			Optional().
 			Comment("username of credential"),
-		field.String("password").
-			MaxLen(defaults.CredentialMaxLenPassword).
+		field.String("secret").
+			MaxLen(defaults.CredentialSecretMaxLength).
 			Optional().
 			Comment("password/hash/secret"),
 		field.String("realm").
-			MaxLen(defaults.CredentialMaxLenRealm).
+			MaxLen(defaults.CredentialRealmMaxLength).
 			Optional().
 			Comment("realm of host (or zone where credentials are valid)"),
 		field.String("host").
-			MaxLen(defaults.CredentialMaxLenHost).
+			MaxLen(defaults.CredentialHostMaxLength).
 			Optional().
 			Comment("host from which creds has been extracted"),
 		field.String("note").
-			MaxLen(defaults.CredentialMaxLenNote).
+			MaxLen(defaults.CredentialNoteMaxLength).
 			Optional().
 			Comment("note of credential"),
 		field.Uint32("color").
-			Default(defaults.DefaultColor).
+			Default(constants.DefaultColor).
 			Comment("color of entity"),
 	}
 }

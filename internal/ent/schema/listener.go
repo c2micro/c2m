@@ -5,7 +5,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/c2micro/c2msrv/internal/defaults"
+	"github.com/c2micro/c2mshr/defaults"
+	"github.com/c2micro/c2msrv/internal/constants"
 	"github.com/c2micro/c2msrv/internal/types"
 
 	"entgo.io/ent"
@@ -41,7 +42,7 @@ func (Listener) Fields() []ent.Field {
 			Optional().
 			Comment("authentication token of listener"),
 		field.String("name").
-			MaxLen(defaults.ListenerMaxLenName).
+			MaxLen(defaults.ListenerNameMaxLength).
 			Optional().
 			Comment("freehand name of listener"),
 		field.String("ip").
@@ -62,10 +63,10 @@ func (Listener) Fields() []ent.Field {
 			Optional().
 			Comment("bind port of listener"),
 		field.Uint32("color").
-			Default(defaults.DefaultColor).
+			Default(constants.DefaultColor).
 			Comment("color of entity"),
 		field.String("note").
-			MaxLen(defaults.ListenerMaxLenNote).
+			MaxLen(defaults.ListenerNoteMaxLength).
 			Optional().
 			Comment("note of listener"),
 		field.Time("last").

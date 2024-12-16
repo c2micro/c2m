@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/c2micro/c2mshr/defaults"
 	def "github.com/c2micro/c2mshr/defaults"
 	operatorv1 "github.com/c2micro/c2mshr/proto/gen/operator/v1"
 	"github.com/c2micro/c2msrv/internal/constants"
-	"github.com/c2micro/c2msrv/internal/defaults"
 	"github.com/c2micro/c2msrv/internal/ent"
 	"github.com/c2micro/c2msrv/internal/ent/beacon"
 	"github.com/c2micro/c2msrv/internal/ent/blobber"
@@ -181,7 +181,7 @@ func (s *server) SubscribeListeners(req *operatorv1.SubscribeListenersRequest, s
 		return status.Error(codes.Internal, shared.ErrorDB)
 	}
 	// разбивем массив объектов на чанки и отправляем их
-	for _, chunk := range utils.ChunkBy(ls, defaults.MaxObjectChunks) {
+	for _, chunk := range utils.ChunkBy(ls, constants.MaxObjectChunks) {
 		if err = stream.Send(&operatorv1.SubscribeListenersResponse{
 			Response: &operatorv1.SubscribeListenersResponse_Listeners{
 				Listeners: pools.ToListenersResponse(chunk),
@@ -254,7 +254,7 @@ func (s *server) SubscribeBeacons(req *operatorv1.SubscribeBeaconsRequest, strea
 		return status.Error(codes.Internal, shared.ErrorDB)
 	}
 	// разбиваем массив объектов на чанки и отправляем
-	for _, chunk := range utils.ChunkBy(bs, defaults.MaxObjectChunks) {
+	for _, chunk := range utils.ChunkBy(bs, constants.MaxObjectChunks) {
 		if err = stream.Send(&operatorv1.SubscribeBeaconsResponse{
 			Response: &operatorv1.SubscribeBeaconsResponse_Beacons{
 				Beacons: pools.ToBeaconsResponse(chunk),
@@ -326,7 +326,7 @@ func (s *server) SubscribeOperators(req *operatorv1.SubscribeOperatorsRequest, s
 		return status.Error(codes.Internal, shared.ErrorDB)
 	}
 	// разбиваем массив объектов на чанки и отправляем
-	for _, chunk := range utils.ChunkBy(os, defaults.MaxObjectChunks) {
+	for _, chunk := range utils.ChunkBy(os, constants.MaxObjectChunks) {
 		if err = stream.Send(&operatorv1.SubscribeOperatorsResponse{
 			Response: &operatorv1.SubscribeOperatorsResponse_Operators{
 				Operators: pools.ToOperatorsResponse(chunk),
@@ -399,7 +399,7 @@ func (s *server) SubscribeChat(req *operatorv1.SubscribeChatRequest, stream oper
 		return status.Error(codes.Internal, shared.ErrorDB)
 	}
 	// разбиваем массив объектов на чанки и отправляем
-	for _, chunk := range utils.ChunkBy(ms, defaults.MaxObjectChunks) {
+	for _, chunk := range utils.ChunkBy(ms, constants.MaxObjectChunks) {
 		if err = stream.Send(&operatorv1.SubscribeChatResponse{
 			Response: &operatorv1.SubscribeChatResponse_Messages{
 				Messages: pools.ToChatMessagesResponse(chunk),
@@ -471,7 +471,7 @@ func (s *server) SubscribeCredentials(req *operatorv1.SubscribeCredentialsReques
 		return status.Error(codes.Internal, shared.ErrorDB)
 	}
 	// разбиваем массив объектов на чанки и отправляем
-	for _, chunk := range utils.ChunkBy(cs, defaults.MaxObjectChunks) {
+	for _, chunk := range utils.ChunkBy(cs, constants.MaxObjectChunks) {
 		if err = stream.Send(&operatorv1.SubscribeCredentialsResponse{
 			Response: &operatorv1.SubscribeCredentialsResponse_Credentials{
 				Credentials: pools.ToCredentialsResponse(chunk),
@@ -1055,38 +1055,38 @@ func (s *server) NewCredential(ctx context.Context, req *operatorv1.NewCredentia
 
 	// username
 	if req.GetUsername() != nil {
-		if len(req.GetUsername().GetValue()) > defaults.CredentialMaxLenUsername {
-			c.SetUsername(req.GetUsername().GetValue()[:defaults.CredentialMaxLenUsername])
+		if len(req.GetUsername().GetValue()) > defaults.CredentialUsernameMaxLength {
+			c.SetUsername(req.GetUsername().GetValue()[:defaults.CredentialUsernameMaxLength])
 		} else {
 			c.SetUsername(req.GetUsername().GetValue())
 		}
 	}
 	// password
 	if req.GetPassword() != nil {
-		if len(req.GetPassword().GetValue()) > defaults.CredentialMaxLenPassword {
-			c.SetPassword(req.GetPassword().GetValue()[:defaults.CredentialMaxLenPassword])
+		if len(req.GetPassword().GetValue()) > defaults.CredentialSecretMaxLength {
+			c.SetPassword(req.GetPassword().GetValue()[:defaults.CredentialSecretMaxLength])
 		} else {
 			c.SetPassword(req.GetPassword().GetValue())
 		}
 	}
 	// realm
 	if req.GetRealm() != nil {
-		if len(req.GetRealm().GetValue()) > defaults.CredentialMaxLenRealm {
-			c.SetRealm(req.GetRealm().GetValue()[:defaults.CredentialMaxLenRealm])
+		if len(req.GetRealm().GetValue()) > defaults.CredentialRealmMaxLength {
+			c.SetRealm(req.GetRealm().GetValue()[:defaults.CredentialRealmMaxLength])
 		} else {
 			c.SetRealm(req.GetRealm().GetValue())
 		}
 	}
 	// host
 	if req.GetHost() != nil {
-		if len(req.GetHost().GetValue()) > defaults.CredentialMaxLenHost {
-			c.SetHost(req.GetHost().GetValue()[:defaults.CredentialMaxLenHost])
+		if len(req.GetHost().GetValue()) > defaults.CredentialHostMaxLength {
+			c.SetHost(req.GetHost().GetValue()[:defaults.CredentialHostMaxLength])
 		} else {
 			c.SetHost(req.GetHost().GetValue())
 		}
 	}
 
-	c.SetColor(defaults.DefaultColor)
+	c.SetColor(constants.DefaultColor)
 
 	// сохраняем
 	var cs *ent.Credential

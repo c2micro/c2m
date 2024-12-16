@@ -5,7 +5,7 @@ import (
 
 	managementv1 "github.com/c2micro/c2mshr/proto/gen/management/v1"
 	operatorv1 "github.com/c2micro/c2mshr/proto/gen/operator/v1"
-	"github.com/c2micro/c2msrv/internal/defaults"
+	"github.com/c2micro/c2msrv/internal/constants"
 	"github.com/c2micro/c2msrv/internal/ent"
 	"github.com/c2micro/c2msrv/internal/ent/listener"
 	"github.com/c2micro/c2msrv/internal/ent/operator"
@@ -67,7 +67,7 @@ func (s *server) NewOperator(ctx context.Context, req *managementv1.NewOperatorR
 	operator, err := s.db.Operator.
 		Create().
 		SetUsername(req.GetUsername()).
-		SetColor(defaults.DefaultColor).
+		SetColor(constants.DefaultColor).
 		SetToken(utils.RandString(32)).
 		Save(ctx)
 	if err != nil {
@@ -181,7 +181,7 @@ func (s *server) NewListener(ctx context.Context, req *managementv1.NewListenerR
 	// создаем листенер
 	listener, err := s.db.Listener.
 		Create().
-		SetColor(defaults.DefaultColor).
+		SetColor(constants.DefaultColor).
 		SetToken(utils.RandString(32)).
 		Save(ctx)
 	if err != nil {

@@ -5,8 +5,8 @@ import (
 	"net"
 	"time"
 
-	c "github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/defaults"
+	"github.com/c2micro/c2mshr/defaults"
+	"github.com/c2micro/c2msrv/internal/constants"
 	"github.com/c2micro/c2msrv/internal/types"
 
 	"entgo.io/ent"
@@ -67,36 +67,36 @@ func (Beacon) Fields() []ent.Field {
 			Optional().
 			Comment("internal IP address of beacon"),
 		field.Enum("os").
-			GoType(c.BeaconOS(0)).
+			GoType(defaults.BeaconOS(0)).
 			Comment("type of operating system"),
 		field.String("os_meta").
-			MaxLen(defaults.BeaconMaxLenOsMeta).
+			MaxLen(defaults.BeaconOsMetaMaxLength).
 			Optional().
 			Comment("metadata of operating system"),
 		field.String("hostname").
-			MaxLen(defaults.BeaconMaxLenHostname).
+			MaxLen(defaults.BeaconHostnameMaxLength).
 			Optional().
 			Comment("hostname of machine, on which beacon deployed"),
 		field.String("username").
-			MaxLen(defaults.BeaconMaxLenUsername).
+			MaxLen(defaults.BeaconUsernameMaxLength).
 			Optional().
 			Comment("username of beacon's process"),
 		field.String("domain").
-			MaxLen(defaults.BeaconMaxLenDomain).
+			MaxLen(defaults.BeaconDomainMaxLength).
 			Optional().
 			Comment("domain of machine, on which beacon deployed"),
 		field.Bool("privileged").
 			Optional().
 			Comment("is beacon process is privileged"),
 		field.String("process_name").
-			MaxLen(defaults.BeaconMaxLenProcessName).
+			MaxLen(defaults.BeaconProcessNameMaxLength).
 			Optional().
 			Comment("name of beacon process"),
 		field.Uint32("pid").
 			Optional().
 			Comment("process ID of beacon"),
 		field.Enum("arch").
-			GoType(c.BeaconArch(0)).
+			GoType(defaults.BeaconArch(0)).
 			Comment("architecture of beacon process"),
 		field.Uint32("sleep").
 			Comment("sleep value of beacon"),
@@ -111,11 +111,11 @@ func (Beacon) Fields() []ent.Field {
 		field.Uint32("caps").
 			Comment("capabilities of beacon"),
 		field.String("note").
-			MaxLen(defaults.BeaconMaxLenNote).
+			MaxLen(defaults.BeaconNoteMaxLength).
 			Optional().
 			Comment("note of beacon"),
 		field.Uint32("color").
-			Default(defaults.DefaultColor).
+			Default(constants.DefaultColor).
 			Comment("color of entity"),
 	}
 }

@@ -13,7 +13,6 @@ import (
 	listenerv1 "github.com/c2micro/c2mshr/proto/gen/listener/v1"
 	operatorv1 "github.com/c2micro/c2mshr/proto/gen/operator/v1"
 	"github.com/c2micro/c2msrv/internal/constants"
-	def "github.com/c2micro/c2msrv/internal/defaults"
 	"github.com/c2micro/c2msrv/internal/ent"
 	"github.com/c2micro/c2msrv/internal/ent/beacon"
 	"github.com/c2micro/c2msrv/internal/ent/blobber"
@@ -47,8 +46,8 @@ func (s *server) UpdateListener(ctx context.Context, req *listenerv1.UpdateListe
 
 	// name
 	if req.GetName() != nil {
-		if len(req.GetName().GetValue()) > def.ListenerMaxLenName {
-			m.SetName(req.GetName().GetValue()[:def.ListenerMaxLenName])
+		if len(req.GetName().GetValue()) > defaults.ListenerNameMaxLength {
+			m.SetName(req.GetName().GetValue()[:defaults.ListenerNameMaxLength])
 		} else {
 			m.SetName(req.GetName().GetValue())
 		}
@@ -153,32 +152,32 @@ func (s *server) NewBeacon(ctx context.Context, req *listenerv1.NewBeaconRequest
 	b.SetOs(defaults.BeaconOS(req.GetOs()))
 	// os_meta
 	if req.GetOsMeta() != nil {
-		if len(req.GetOsMeta().GetValue()) > def.BeaconMaxLenOsMeta {
-			b.SetOsMeta(req.GetOsMeta().GetValue()[:def.BeaconMaxLenOsMeta])
+		if len(req.GetOsMeta().GetValue()) > defaults.BeaconOsMetaMaxLength {
+			b.SetOsMeta(req.GetOsMeta().GetValue()[:defaults.BeaconOsMetaMaxLength])
 		} else {
 			b.SetOsMeta(req.GetOsMeta().GetValue())
 		}
 	}
 	// hostname
 	if req.GetHostname() != nil {
-		if len(req.GetHostname().GetValue()) > def.BeaconMaxLenHostname {
-			b.SetHostname(req.GetHostname().GetValue()[:def.BeaconMaxLenHostname])
+		if len(req.GetHostname().GetValue()) > defaults.BeaconHostnameMaxLength {
+			b.SetHostname(req.GetHostname().GetValue()[:defaults.BeaconHostnameMaxLength])
 		} else {
 			b.SetHostname(req.GetHostname().GetValue())
 		}
 	}
 	// username
 	if req.GetUsername() != nil {
-		if len(req.GetUsername().GetValue()) > def.BeaconMaxLenUsername {
-			b.SetUsername(req.GetUsername().GetValue()[:def.BeaconMaxLenUsername])
+		if len(req.GetUsername().GetValue()) > defaults.BeaconUsernameMaxLength {
+			b.SetUsername(req.GetUsername().GetValue()[:defaults.BeaconUsernameMaxLength])
 		} else {
 			b.SetUsername(req.GetUsername().GetValue())
 		}
 	}
 	// domain
 	if req.GetDomain() != nil {
-		if len(req.GetDomain().GetValue()) > def.BeaconMaxLenDomain {
-			b.SetDomain(req.GetDomain().GetValue()[:def.BeaconMaxLenDomain])
+		if len(req.GetDomain().GetValue()) > defaults.BeaconDomainMaxLength {
+			b.SetDomain(req.GetDomain().GetValue()[:defaults.BeaconDomainMaxLength])
 		} else {
 			b.SetDomain(req.GetDomain().GetValue())
 		}
@@ -189,8 +188,8 @@ func (s *server) NewBeacon(ctx context.Context, req *listenerv1.NewBeaconRequest
 	}
 	// proc_name
 	if req.GetProcName() != nil {
-		if len(req.GetProcName().GetValue()) > def.BeaconMaxLenProcessName {
-			b.SetProcessName(req.GetProcName().GetValue()[:def.BeaconMaxLenProcessName])
+		if len(req.GetProcName().GetValue()) > defaults.BeaconProcessNameMaxLength {
+			b.SetProcessName(req.GetProcName().GetValue()[:defaults.BeaconProcessNameMaxLength])
 		} else {
 			b.SetProcessName(req.GetProcName().GetValue())
 		}
@@ -208,7 +207,7 @@ func (s *server) NewBeacon(ctx context.Context, req *listenerv1.NewBeaconRequest
 	// caps
 	b.SetCaps(req.GetCaps())
 	// цвет
-	b.SetColor(def.DefaultColor)
+	b.SetColor(constants.DefaultColor)
 
 	// сохраняем
 	var bs *ent.Beacon
@@ -254,7 +253,7 @@ func (s *server) NewBeacon(ctx context.Context, req *listenerv1.NewBeaconRequest
 	// рассылаем новое сообщение для подписчиков
 	go pools.Pool.Chat.Send(&operatorv1.ChatResponse{
 		CreatedAt: timestamppb.New(ch.CreatedAt),
-		From:      def.ChatSrvFrom,
+		From:      defaults.ChatSrvFrom,
 		Message:   ch.Message,
 	})
 

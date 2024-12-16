@@ -3,13 +3,12 @@ package schema
 import (
 	"time"
 
-	"github.com/c2micro/c2msrv/internal/defaults"
-
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/entsql"
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
+	"github.com/c2micro/c2mshr/defaults"
 )
 
 // Chat объявление схемы Chat
@@ -38,8 +37,8 @@ func (Chat) Fields() []ent.Field {
 			Optional().
 			Comment("creator of message"),
 		field.String("message").
-			MinLen(defaults.ChatMinLenMessage).
-			MaxLen(defaults.ChatMaxLenMessage).
+			MinLen(defaults.ChatMessageMinLength).
+			MaxLen(defaults.ChatMessageMaxLength).
 			Comment("message itself"),
 	}
 }

@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/defaults"
+	"github.com/c2micro/c2mshr/defaults"
 )
 
 // Group объявление схемы Group
@@ -32,8 +32,8 @@ func (Group) Fields() []ent.Field {
 		field.Int("bid").
 			Comment("beacon ID"),
 		field.String("cmd").
-			MinLen(defaults.GroupMinCmdLen).
-			MaxLen(defaults.GroupMaxCmdLen).
+			MinLen(defaults.TaskGroupCmdMinLength).
+			MaxLen(defaults.TaskGroupCmdMaxLength).
 			Comment("command with arguments"),
 		field.Bool("visible").
 			Comment("is group visible for other operators"),
