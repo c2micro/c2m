@@ -9,6 +9,7 @@ import (
 	"github.com/c2micro/c2msrv/internal/ent"
 	"github.com/c2micro/c2msrv/internal/ent/listener"
 	"github.com/c2micro/c2msrv/internal/ent/operator"
+	"github.com/c2micro/c2msrv/internal/ent/pki"
 	"github.com/c2micro/c2msrv/internal/pools"
 	"github.com/c2micro/c2msrv/internal/shared"
 	"github.com/c2micro/c2msrv/internal/utils"
@@ -25,7 +26,7 @@ type server struct {
 	lg *zap.Logger
 }
 
-// Получение списка операторов
+// получение списка операторов
 func (s *server) GetOperators(ctx context.Context, req *managementv1.GetOperatorsRequest) (*managementv1.GetOperatorsResponse, error) {
 	lg := s.lg.Named("GetOperators")
 
@@ -49,7 +50,7 @@ func (s *server) GetOperators(ctx context.Context, req *managementv1.GetOperator
 	return &managementv1.GetOperatorsResponse{Operators: temp}, nil
 }
 
-// Создание нового оператора
+// создание нового оператора
 func (s *server) NewOperator(ctx context.Context, req *managementv1.NewOperatorRequest) (*managementv1.NewOperatorResponse, error) {
 	lg := s.lg.Named("NewOperator")
 
@@ -89,7 +90,7 @@ func (s *server) NewOperator(ctx context.Context, req *managementv1.NewOperatorR
 	}}, nil
 }
 
-// Отзыв access токена оператора
+// отзыв авторизационного токена оператора
 func (s *server) RevokeOperator(ctx context.Context, req *managementv1.RevokeOperatorRequest) (*managementv1.RevokeOperatorResponse, error) {
 	lg := s.lg.Named("RevokeOperator")
 
@@ -114,7 +115,7 @@ func (s *server) RevokeOperator(ctx context.Context, req *managementv1.RevokeOpe
 	return &managementv1.RevokeOperatorResponse{}, nil
 }
 
-// Регенерация access токена для оператора
+// регенерация авторизационного токена для оператора
 func (s *server) RegenerateOperator(ctx context.Context, req *managementv1.RegenerateOperatorRequest) (*managementv1.RegenerateOperatorResponse, error) {
 	lg := s.lg.Named("RegenerateOperator")
 
@@ -147,7 +148,7 @@ func (s *server) RegenerateOperator(ctx context.Context, req *managementv1.Regen
 	}}, nil
 }
 
-// Получение списка листенеров
+// получение списка листенеров
 func (s *server) GetListeners(ctx context.Context, req *managementv1.GetListenersRequest) (*managementv1.GetListenersResponse, error) {
 	lg := s.lg.Named("GetListeners")
 
@@ -174,7 +175,7 @@ func (s *server) GetListeners(ctx context.Context, req *managementv1.GetListener
 	return &managementv1.GetListenersResponse{Listeners: temp}, nil
 }
 
-// Создание нового листенера
+// создание нового листенера
 func (s *server) NewListener(ctx context.Context, req *managementv1.NewListenerRequest) (*managementv1.NewListenerResponse, error) {
 	lg := s.lg.Named("NewListener")
 
@@ -202,7 +203,7 @@ func (s *server) NewListener(ctx context.Context, req *managementv1.NewListenerR
 	}}, nil
 }
 
-// RevokeListener отзыв access токена листенера
+// отзыв авторизационного токена листенера
 func (s *server) RevokeListener(ctx context.Context, req *managementv1.RevokeListenerRequest) (*managementv1.RevokeListenerResponse, error) {
 	lg := s.lg.Named("RevokeListener")
 
@@ -227,7 +228,7 @@ func (s *server) RevokeListener(ctx context.Context, req *managementv1.RevokeLis
 	return &managementv1.RevokeListenerResponse{}, nil
 }
 
-// Регенерация access токена для листенера
+// регенерация авторизационного токена для листенера
 func (s *server) RegenerateListener(ctx context.Context, req *managementv1.RegenerateListenerRequest) (*managementv1.RegenerateListenerResponse, error) {
 	lg := s.lg.Named("RegenerateListener")
 
@@ -261,4 +262,61 @@ func (s *server) RegenerateListener(ctx context.Context, req *managementv1.Regen
 		Token: wrapperspb.String(token),
 		Last:  timestamppb.New(l.Last),
 	}}, nil
+}
+
+// получение сертификати CA от GRPC PKI
+func (s *server) GetCertCA(ctx context.Context, req *managementv1.GetCertCARequest) (*managementv1.GetCertCAResponse, error) {
+	lg := s.lg.Named("GetCertCA")
+
+	pki, err := s.db.Pki.
+		Query().
+		Where(pki.TypeEQ(pki.TypeCa)).
+		Only(ctx)
+	if err != nil {
+		lg.Error(shared.ErrorQueryPkiCaFromDB, zap.Error(err))
+		return nil, status.Error(codes.Internal, shared.ErrorQueryPkiCaFromDB)
+	}
+	return &managementv1.GetCertCAResponse{
+		Certificate: &managementv1.Certificate{
+			Data: string(pki.Cert),
+		},
+	}, nil
+}
+
+// получение сертификата, генерируемого для операторского GRPC
+func (s *server) GetCertOperator(ctx context.Context, req *managementv1.GetCertOperatorRequest) (*managementv1.GetCertOperatorResponse, error) {
+	lg := s.lg.Named("GetCertOperator")
+
+	pki, err := s.db.Pki.
+		Query().
+		Where(pki.TypeEQ(pki.TypeOperator)).
+		Only(ctx)
+	if err != nil {
+		lg.Error(shared.ErrorQueryPkiOperatorFromDB, zap.Error(err))
+		return nil, status.Error(codes.Internal, shared.ErrorQueryPkiOperatorFromDB)
+	}
+	return &managementv1.GetCertOperatorResponse{
+		Certificate: &managementv1.Certificate{
+			Data: string(pki.Cert),
+		},
+	}, nil
+}
+
+// получение сертификата, генерируемого для листенерового GRPC
+func (s *server) GetCertListener(ctx context.Context, req *managementv1.GetCertListenerRequest) (*managementv1.GetCertListenerResponse, error) {
+	lg := s.lg.Named("GetCertListener")
+
+	pki, err := s.db.Pki.
+		Query().
+		Where(pki.TypeEQ(pki.TypeListener)).
+		Only(ctx)
+	if err != nil {
+		lg.Error(shared.ErrorQueryPkiListenerFromDB, zap.Error(err))
+		return nil, status.Error(codes.Internal, shared.ErrorQueryPkiListenerFromDB)
+	}
+	return &managementv1.GetCertListenerResponse{
+		Certificate: &managementv1.Certificate{
+			Data: string(pki.Cert),
+		},
+	}, nil
 }

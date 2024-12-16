@@ -27,6 +27,9 @@ const (
 	ManagementService_NewListener_FullMethodName        = "/management.v1.ManagementService/NewListener"
 	ManagementService_RevokeListener_FullMethodName     = "/management.v1.ManagementService/RevokeListener"
 	ManagementService_RegenerateListener_FullMethodName = "/management.v1.ManagementService/RegenerateListener"
+	ManagementService_GetCertCA_FullMethodName          = "/management.v1.ManagementService/GetCertCA"
+	ManagementService_GetCertOperator_FullMethodName    = "/management.v1.ManagementService/GetCertOperator"
+	ManagementService_GetCertListener_FullMethodName    = "/management.v1.ManagementService/GetCertListener"
 )
 
 // ManagementServiceClient is the client API for ManagementService service.
@@ -49,6 +52,12 @@ type ManagementServiceClient interface {
 	RevokeListener(ctx context.Context, in *RevokeListenerRequest, opts ...grpc.CallOption) (*RevokeListenerResponse, error)
 	// регенерация access токена для листенера
 	RegenerateListener(ctx context.Context, in *RegenerateListenerRequest, opts ...grpc.CallOption) (*RegenerateListenerResponse, error)
+	// получение CA сертификата PKI (GRPC)
+	GetCertCA(ctx context.Context, in *GetCertCARequest, opts ...grpc.CallOption) (*GetCertCAResponse, error)
+	// получение сертификата операторского GRPC
+	GetCertOperator(ctx context.Context, in *GetCertOperatorRequest, opts ...grpc.CallOption) (*GetCertOperatorResponse, error)
+	// получение сертификата листенерового GRPC
+	GetCertListener(ctx context.Context, in *GetCertListenerRequest, opts ...grpc.CallOption) (*GetCertListenerResponse, error)
 }
 
 type managementServiceClient struct {
@@ -139,6 +148,36 @@ func (c *managementServiceClient) RegenerateListener(ctx context.Context, in *Re
 	return out, nil
 }
 
+func (c *managementServiceClient) GetCertCA(ctx context.Context, in *GetCertCARequest, opts ...grpc.CallOption) (*GetCertCAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCertCAResponse)
+	err := c.cc.Invoke(ctx, ManagementService_GetCertCA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managementServiceClient) GetCertOperator(ctx context.Context, in *GetCertOperatorRequest, opts ...grpc.CallOption) (*GetCertOperatorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCertOperatorResponse)
+	err := c.cc.Invoke(ctx, ManagementService_GetCertOperator_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *managementServiceClient) GetCertListener(ctx context.Context, in *GetCertListenerRequest, opts ...grpc.CallOption) (*GetCertListenerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCertListenerResponse)
+	err := c.cc.Invoke(ctx, ManagementService_GetCertListener_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ManagementServiceServer is the server API for ManagementService service.
 // All implementations must embed UnimplementedManagementServiceServer
 // for forward compatibility.
@@ -159,6 +198,12 @@ type ManagementServiceServer interface {
 	RevokeListener(context.Context, *RevokeListenerRequest) (*RevokeListenerResponse, error)
 	// регенерация access токена для листенера
 	RegenerateListener(context.Context, *RegenerateListenerRequest) (*RegenerateListenerResponse, error)
+	// получение CA сертификата PKI (GRPC)
+	GetCertCA(context.Context, *GetCertCARequest) (*GetCertCAResponse, error)
+	// получение сертификата операторского GRPC
+	GetCertOperator(context.Context, *GetCertOperatorRequest) (*GetCertOperatorResponse, error)
+	// получение сертификата листенерового GRPC
+	GetCertListener(context.Context, *GetCertListenerRequest) (*GetCertListenerResponse, error)
 	mustEmbedUnimplementedManagementServiceServer()
 }
 
@@ -192,6 +237,15 @@ func (UnimplementedManagementServiceServer) RevokeListener(context.Context, *Rev
 }
 func (UnimplementedManagementServiceServer) RegenerateListener(context.Context, *RegenerateListenerRequest) (*RegenerateListenerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegenerateListener not implemented")
+}
+func (UnimplementedManagementServiceServer) GetCertCA(context.Context, *GetCertCARequest) (*GetCertCAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCertCA not implemented")
+}
+func (UnimplementedManagementServiceServer) GetCertOperator(context.Context, *GetCertOperatorRequest) (*GetCertOperatorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCertOperator not implemented")
+}
+func (UnimplementedManagementServiceServer) GetCertListener(context.Context, *GetCertListenerRequest) (*GetCertListenerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCertListener not implemented")
 }
 func (UnimplementedManagementServiceServer) mustEmbedUnimplementedManagementServiceServer() {}
 func (UnimplementedManagementServiceServer) testEmbeddedByValue()                           {}
@@ -358,6 +412,60 @@ func _ManagementService_RegenerateListener_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManagementService_GetCertCA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCertCARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagementServiceServer).GetCertCA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ManagementService_GetCertCA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagementServiceServer).GetCertCA(ctx, req.(*GetCertCARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagementService_GetCertOperator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCertOperatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagementServiceServer).GetCertOperator(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ManagementService_GetCertOperator_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagementServiceServer).GetCertOperator(ctx, req.(*GetCertOperatorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ManagementService_GetCertListener_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCertListenerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManagementServiceServer).GetCertListener(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ManagementService_GetCertListener_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManagementServiceServer).GetCertListener(ctx, req.(*GetCertListenerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ManagementService_ServiceDesc is the grpc.ServiceDesc for ManagementService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -396,6 +504,18 @@ var ManagementService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RegenerateListener",
 			Handler:    _ManagementService_RegenerateListener_Handler,
+		},
+		{
+			MethodName: "GetCertCA",
+			Handler:    _ManagementService_GetCertCA_Handler,
+		},
+		{
+			MethodName: "GetCertOperator",
+			Handler:    _ManagementService_GetCertOperator_Handler,
+		},
+		{
+			MethodName: "GetCertListener",
+			Handler:    _ManagementService_GetCertListener_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

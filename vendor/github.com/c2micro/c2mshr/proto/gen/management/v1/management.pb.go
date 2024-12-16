@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Operator сообщение, в котором хранятся данные об отдельном операторе
+// сообщение, в котором хранятся данные об отдельном операторе
 type Operator struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -87,7 +87,7 @@ func (x *Operator) GetLast() *timestamppb.Timestamp {
 	return nil
 }
 
-// Listener сообщение, в котором хранятся данные об отдельном листенере
+// сообщение, в котором хранятся данные об отдельном листенере
 type Listener struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -179,6 +179,52 @@ func (x *Listener) GetLast() *timestamppb.Timestamp {
 	return nil
 }
 
+// сообщение, в котором хранятся данные о сертификате
+type Certificate struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data string `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *Certificate) Reset() {
+	*x = Certificate{}
+	mi := &file_management_v1_management_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Certificate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Certificate) ProtoMessage() {}
+
+func (x *Certificate) ProtoReflect() protoreflect.Message {
+	mi := &file_management_v1_management_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Certificate.ProtoReflect.Descriptor instead.
+func (*Certificate) Descriptor() ([]byte, []int) {
+	return file_management_v1_management_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Certificate) GetData() string {
+	if x != nil {
+		return x.Data
+	}
+	return ""
+}
+
 // --> GetOperators
 type GetOperatorsRequest struct {
 	state         protoimpl.MessageState
@@ -188,7 +234,7 @@ type GetOperatorsRequest struct {
 
 func (x *GetOperatorsRequest) Reset() {
 	*x = GetOperatorsRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[2]
+	mi := &file_management_v1_management_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -200,7 +246,7 @@ func (x *GetOperatorsRequest) String() string {
 func (*GetOperatorsRequest) ProtoMessage() {}
 
 func (x *GetOperatorsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[2]
+	mi := &file_management_v1_management_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -213,7 +259,7 @@ func (x *GetOperatorsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOperatorsRequest.ProtoReflect.Descriptor instead.
 func (*GetOperatorsRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{2}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{3}
 }
 
 type GetOperatorsResponse struct {
@@ -226,7 +272,7 @@ type GetOperatorsResponse struct {
 
 func (x *GetOperatorsResponse) Reset() {
 	*x = GetOperatorsResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[3]
+	mi := &file_management_v1_management_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -238,7 +284,7 @@ func (x *GetOperatorsResponse) String() string {
 func (*GetOperatorsResponse) ProtoMessage() {}
 
 func (x *GetOperatorsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[3]
+	mi := &file_management_v1_management_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +297,7 @@ func (x *GetOperatorsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOperatorsResponse.ProtoReflect.Descriptor instead.
 func (*GetOperatorsResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{3}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetOperatorsResponse) GetOperators() []*Operator {
@@ -273,7 +319,7 @@ type NewOperatorRequest struct {
 
 func (x *NewOperatorRequest) Reset() {
 	*x = NewOperatorRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[4]
+	mi := &file_management_v1_management_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -285,7 +331,7 @@ func (x *NewOperatorRequest) String() string {
 func (*NewOperatorRequest) ProtoMessage() {}
 
 func (x *NewOperatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[4]
+	mi := &file_management_v1_management_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -298,7 +344,7 @@ func (x *NewOperatorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewOperatorRequest.ProtoReflect.Descriptor instead.
 func (*NewOperatorRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{4}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *NewOperatorRequest) GetUsername() string {
@@ -318,7 +364,7 @@ type NewOperatorResponse struct {
 
 func (x *NewOperatorResponse) Reset() {
 	*x = NewOperatorResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[5]
+	mi := &file_management_v1_management_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -330,7 +376,7 @@ func (x *NewOperatorResponse) String() string {
 func (*NewOperatorResponse) ProtoMessage() {}
 
 func (x *NewOperatorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[5]
+	mi := &file_management_v1_management_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -343,7 +389,7 @@ func (x *NewOperatorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewOperatorResponse.ProtoReflect.Descriptor instead.
 func (*NewOperatorResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{5}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *NewOperatorResponse) GetOperator() *Operator {
@@ -365,7 +411,7 @@ type RevokeOperatorRequest struct {
 
 func (x *RevokeOperatorRequest) Reset() {
 	*x = RevokeOperatorRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[6]
+	mi := &file_management_v1_management_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -377,7 +423,7 @@ func (x *RevokeOperatorRequest) String() string {
 func (*RevokeOperatorRequest) ProtoMessage() {}
 
 func (x *RevokeOperatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[6]
+	mi := &file_management_v1_management_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -390,7 +436,7 @@ func (x *RevokeOperatorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeOperatorRequest.ProtoReflect.Descriptor instead.
 func (*RevokeOperatorRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{6}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *RevokeOperatorRequest) GetUsername() string {
@@ -408,7 +454,7 @@ type RevokeOperatorResponse struct {
 
 func (x *RevokeOperatorResponse) Reset() {
 	*x = RevokeOperatorResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[7]
+	mi := &file_management_v1_management_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -420,7 +466,7 @@ func (x *RevokeOperatorResponse) String() string {
 func (*RevokeOperatorResponse) ProtoMessage() {}
 
 func (x *RevokeOperatorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[7]
+	mi := &file_management_v1_management_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -433,7 +479,7 @@ func (x *RevokeOperatorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeOperatorResponse.ProtoReflect.Descriptor instead.
 func (*RevokeOperatorResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{7}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{8}
 }
 
 // --> RegenerateOperator
@@ -448,7 +494,7 @@ type RegenerateOperatorRequest struct {
 
 func (x *RegenerateOperatorRequest) Reset() {
 	*x = RegenerateOperatorRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[8]
+	mi := &file_management_v1_management_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -460,7 +506,7 @@ func (x *RegenerateOperatorRequest) String() string {
 func (*RegenerateOperatorRequest) ProtoMessage() {}
 
 func (x *RegenerateOperatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[8]
+	mi := &file_management_v1_management_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -473,7 +519,7 @@ func (x *RegenerateOperatorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegenerateOperatorRequest.ProtoReflect.Descriptor instead.
 func (*RegenerateOperatorRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{8}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RegenerateOperatorRequest) GetUsername() string {
@@ -493,7 +539,7 @@ type RegenerateOperatorResponse struct {
 
 func (x *RegenerateOperatorResponse) Reset() {
 	*x = RegenerateOperatorResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[9]
+	mi := &file_management_v1_management_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -505,7 +551,7 @@ func (x *RegenerateOperatorResponse) String() string {
 func (*RegenerateOperatorResponse) ProtoMessage() {}
 
 func (x *RegenerateOperatorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[9]
+	mi := &file_management_v1_management_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -518,7 +564,7 @@ func (x *RegenerateOperatorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegenerateOperatorResponse.ProtoReflect.Descriptor instead.
 func (*RegenerateOperatorResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{9}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *RegenerateOperatorResponse) GetOperator() *Operator {
@@ -537,7 +583,7 @@ type GetListenersRequest struct {
 
 func (x *GetListenersRequest) Reset() {
 	*x = GetListenersRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[10]
+	mi := &file_management_v1_management_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -549,7 +595,7 @@ func (x *GetListenersRequest) String() string {
 func (*GetListenersRequest) ProtoMessage() {}
 
 func (x *GetListenersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[10]
+	mi := &file_management_v1_management_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -562,7 +608,7 @@ func (x *GetListenersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetListenersRequest.ProtoReflect.Descriptor instead.
 func (*GetListenersRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{10}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{11}
 }
 
 type GetListenersResponse struct {
@@ -575,7 +621,7 @@ type GetListenersResponse struct {
 
 func (x *GetListenersResponse) Reset() {
 	*x = GetListenersResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[11]
+	mi := &file_management_v1_management_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -587,7 +633,7 @@ func (x *GetListenersResponse) String() string {
 func (*GetListenersResponse) ProtoMessage() {}
 
 func (x *GetListenersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[11]
+	mi := &file_management_v1_management_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -600,7 +646,7 @@ func (x *GetListenersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetListenersResponse.ProtoReflect.Descriptor instead.
 func (*GetListenersResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{11}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetListenersResponse) GetListeners() []*Listener {
@@ -619,7 +665,7 @@ type NewListenerRequest struct {
 
 func (x *NewListenerRequest) Reset() {
 	*x = NewListenerRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[12]
+	mi := &file_management_v1_management_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -631,7 +677,7 @@ func (x *NewListenerRequest) String() string {
 func (*NewListenerRequest) ProtoMessage() {}
 
 func (x *NewListenerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[12]
+	mi := &file_management_v1_management_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -644,7 +690,7 @@ func (x *NewListenerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewListenerRequest.ProtoReflect.Descriptor instead.
 func (*NewListenerRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{12}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{13}
 }
 
 type NewListenerResponse struct {
@@ -657,7 +703,7 @@ type NewListenerResponse struct {
 
 func (x *NewListenerResponse) Reset() {
 	*x = NewListenerResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[13]
+	mi := &file_management_v1_management_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -669,7 +715,7 @@ func (x *NewListenerResponse) String() string {
 func (*NewListenerResponse) ProtoMessage() {}
 
 func (x *NewListenerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[13]
+	mi := &file_management_v1_management_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -682,7 +728,7 @@ func (x *NewListenerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewListenerResponse.ProtoReflect.Descriptor instead.
 func (*NewListenerResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{13}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *NewListenerResponse) GetListener() *Listener {
@@ -704,7 +750,7 @@ type RevokeListenerRequest struct {
 
 func (x *RevokeListenerRequest) Reset() {
 	*x = RevokeListenerRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[14]
+	mi := &file_management_v1_management_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -716,7 +762,7 @@ func (x *RevokeListenerRequest) String() string {
 func (*RevokeListenerRequest) ProtoMessage() {}
 
 func (x *RevokeListenerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[14]
+	mi := &file_management_v1_management_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -729,7 +775,7 @@ func (x *RevokeListenerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeListenerRequest.ProtoReflect.Descriptor instead.
 func (*RevokeListenerRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{14}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *RevokeListenerRequest) GetLid() int64 {
@@ -747,7 +793,7 @@ type RevokeListenerResponse struct {
 
 func (x *RevokeListenerResponse) Reset() {
 	*x = RevokeListenerResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[15]
+	mi := &file_management_v1_management_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -759,7 +805,7 @@ func (x *RevokeListenerResponse) String() string {
 func (*RevokeListenerResponse) ProtoMessage() {}
 
 func (x *RevokeListenerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[15]
+	mi := &file_management_v1_management_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -772,7 +818,7 @@ func (x *RevokeListenerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeListenerResponse.ProtoReflect.Descriptor instead.
 func (*RevokeListenerResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{15}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{16}
 }
 
 // --> RegenerateListener
@@ -787,7 +833,7 @@ type RegenerateListenerRequest struct {
 
 func (x *RegenerateListenerRequest) Reset() {
 	*x = RegenerateListenerRequest{}
-	mi := &file_management_v1_management_proto_msgTypes[16]
+	mi := &file_management_v1_management_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -799,7 +845,7 @@ func (x *RegenerateListenerRequest) String() string {
 func (*RegenerateListenerRequest) ProtoMessage() {}
 
 func (x *RegenerateListenerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[16]
+	mi := &file_management_v1_management_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -812,7 +858,7 @@ func (x *RegenerateListenerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegenerateListenerRequest.ProtoReflect.Descriptor instead.
 func (*RegenerateListenerRequest) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{16}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *RegenerateListenerRequest) GetLid() int64 {
@@ -832,7 +878,7 @@ type RegenerateListenerResponse struct {
 
 func (x *RegenerateListenerResponse) Reset() {
 	*x = RegenerateListenerResponse{}
-	mi := &file_management_v1_management_proto_msgTypes[17]
+	mi := &file_management_v1_management_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -844,7 +890,7 @@ func (x *RegenerateListenerResponse) String() string {
 func (*RegenerateListenerResponse) ProtoMessage() {}
 
 func (x *RegenerateListenerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_management_v1_management_proto_msgTypes[17]
+	mi := &file_management_v1_management_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -857,12 +903,258 @@ func (x *RegenerateListenerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegenerateListenerResponse.ProtoReflect.Descriptor instead.
 func (*RegenerateListenerResponse) Descriptor() ([]byte, []int) {
-	return file_management_v1_management_proto_rawDescGZIP(), []int{17}
+	return file_management_v1_management_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *RegenerateListenerResponse) GetListener() *Listener {
 	if x != nil {
 		return x.Listener
+	}
+	return nil
+}
+
+// --> GetCertCA
+type GetCertCARequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetCertCARequest) Reset() {
+	*x = GetCertCARequest{}
+	mi := &file_management_v1_management_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCertCARequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCertCARequest) ProtoMessage() {}
+
+func (x *GetCertCARequest) ProtoReflect() protoreflect.Message {
+	mi := &file_management_v1_management_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCertCARequest.ProtoReflect.Descriptor instead.
+func (*GetCertCARequest) Descriptor() ([]byte, []int) {
+	return file_management_v1_management_proto_rawDescGZIP(), []int{19}
+}
+
+type GetCertCAResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Certificate *Certificate `protobuf:"bytes,1,opt,name=certificate,proto3" json:"certificate,omitempty"`
+}
+
+func (x *GetCertCAResponse) Reset() {
+	*x = GetCertCAResponse{}
+	mi := &file_management_v1_management_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCertCAResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCertCAResponse) ProtoMessage() {}
+
+func (x *GetCertCAResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_management_v1_management_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCertCAResponse.ProtoReflect.Descriptor instead.
+func (*GetCertCAResponse) Descriptor() ([]byte, []int) {
+	return file_management_v1_management_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *GetCertCAResponse) GetCertificate() *Certificate {
+	if x != nil {
+		return x.Certificate
+	}
+	return nil
+}
+
+// --> GetCertOperator
+type GetCertOperatorRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetCertOperatorRequest) Reset() {
+	*x = GetCertOperatorRequest{}
+	mi := &file_management_v1_management_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCertOperatorRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCertOperatorRequest) ProtoMessage() {}
+
+func (x *GetCertOperatorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_management_v1_management_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCertOperatorRequest.ProtoReflect.Descriptor instead.
+func (*GetCertOperatorRequest) Descriptor() ([]byte, []int) {
+	return file_management_v1_management_proto_rawDescGZIP(), []int{21}
+}
+
+type GetCertOperatorResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Certificate *Certificate `protobuf:"bytes,1,opt,name=certificate,proto3" json:"certificate,omitempty"`
+}
+
+func (x *GetCertOperatorResponse) Reset() {
+	*x = GetCertOperatorResponse{}
+	mi := &file_management_v1_management_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCertOperatorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCertOperatorResponse) ProtoMessage() {}
+
+func (x *GetCertOperatorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_management_v1_management_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCertOperatorResponse.ProtoReflect.Descriptor instead.
+func (*GetCertOperatorResponse) Descriptor() ([]byte, []int) {
+	return file_management_v1_management_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetCertOperatorResponse) GetCertificate() *Certificate {
+	if x != nil {
+		return x.Certificate
+	}
+	return nil
+}
+
+// --> GetCertListener
+type GetCertListenerRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetCertListenerRequest) Reset() {
+	*x = GetCertListenerRequest{}
+	mi := &file_management_v1_management_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCertListenerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCertListenerRequest) ProtoMessage() {}
+
+func (x *GetCertListenerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_management_v1_management_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCertListenerRequest.ProtoReflect.Descriptor instead.
+func (*GetCertListenerRequest) Descriptor() ([]byte, []int) {
+	return file_management_v1_management_proto_rawDescGZIP(), []int{23}
+}
+
+type GetCertListenerResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Certificate *Certificate `protobuf:"bytes,1,opt,name=certificate,proto3" json:"certificate,omitempty"`
+}
+
+func (x *GetCertListenerResponse) Reset() {
+	*x = GetCertListenerResponse{}
+	mi := &file_management_v1_management_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCertListenerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCertListenerResponse) ProtoMessage() {}
+
+func (x *GetCertListenerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_management_v1_management_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCertListenerResponse.ProtoReflect.Descriptor instead.
+func (*GetCertListenerResponse) Descriptor() ([]byte, []int) {
+	return file_management_v1_management_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *GetCertListenerResponse) GetCertificate() *Certificate {
+	if x != nil {
+		return x.Certificate
 	}
 	return nil
 }
@@ -903,60 +1195,83 @@ var file_management_v1_management_proto_rawDesc = []byte{
 	0x72, 0x74, 0x12, 0x2e, 0x0a, 0x04, 0x6c, 0x61, 0x73, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
 	0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x04, 0x6c, 0x61,
-	0x73, 0x74, 0x22, 0x15, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f,
-	0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4d, 0x0a, 0x14, 0x47, 0x65, 0x74,
-	0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x35, 0x0a, 0x09, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e,
-	0x74, 0x2e, 0x76, 0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x09, 0x6f,
-	0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x73, 0x22, 0x30, 0x0a, 0x12, 0x4e, 0x65, 0x77, 0x4f,
-	0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a,
-	0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x4a, 0x0a, 0x13, 0x4e, 0x65,
-	0x77, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x33, 0x0a, 0x08, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74,
-	0x2e, 0x76, 0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x08, 0x6f, 0x70,
-	0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x33, 0x0a, 0x15, 0x52, 0x65, 0x76, 0x6f, 0x6b, 0x65,
-	0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x18, 0x0a, 0x16, 0x52,
-	0x65, 0x76, 0x6f, 0x6b, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x37, 0x0a, 0x19, 0x52, 0x65, 0x67, 0x65, 0x6e, 0x65, 0x72,
-	0x61, 0x74, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x51,
-	0x0a, 0x1a, 0x52, 0x65, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4f, 0x70, 0x65, 0x72,
-	0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x08,
-	0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17,
-	0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x4f,
-	0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x08, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f,
-	0x72, 0x22, 0x15, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72,
-	0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4d, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x4c,
-	0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x35, 0x0a, 0x09, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74,
-	0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x09, 0x6c, 0x69,
-	0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x73, 0x22, 0x14, 0x0a, 0x12, 0x4e, 0x65, 0x77, 0x4c, 0x69,
-	0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4a, 0x0a,
-	0x13, 0x4e, 0x65, 0x77, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x08, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72,
+	0x73, 0x74, 0x22, 0x21, 0x0a, 0x0b, 0x43, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74,
+	0x65, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x15, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x4f, 0x70, 0x65, 0x72,
+	0x61, 0x74, 0x6f, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4d, 0x0a, 0x14,
+	0x47, 0x65, 0x74, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a, 0x09, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72,
+	0x52, 0x09, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x73, 0x22, 0x30, 0x0a, 0x12, 0x4e,
+	0x65, 0x77, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x4a, 0x0a,
+	0x13, 0x4e, 0x65, 0x77, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x08, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d,
+	0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52,
+	0x08, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x33, 0x0a, 0x15, 0x52, 0x65, 0x76,
+	0x6f, 0x6b, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x18,
+	0x0a, 0x16, 0x52, 0x65, 0x76, 0x6f, 0x6b, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x37, 0x0a, 0x19, 0x52, 0x65, 0x67, 0x65,
+	0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d,
+	0x65, 0x22, 0x51, 0x0a, 0x1a, 0x52, 0x65, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4f,
+	0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x33, 0x0a, 0x08, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76,
+	0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x08, 0x6f, 0x70, 0x65, 0x72,
+	0x61, 0x74, 0x6f, 0x72, 0x22, 0x15, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x65,
+	0x6e, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x4d, 0x0a, 0x14, 0x47,
+	0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a, 0x09, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d,
 	0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52,
-	0x08, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x22, 0x29, 0x0a, 0x15, 0x52, 0x65, 0x76,
-	0x6f, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x03, 0x6c, 0x69, 0x64, 0x22, 0x18, 0x0a, 0x16, 0x52, 0x65, 0x76, 0x6f, 0x6b, 0x65, 0x4c, 0x69,
-	0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2d,
-	0x0a, 0x19, 0x52, 0x65, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74,
-	0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6c,
-	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6c, 0x69, 0x64, 0x22, 0x51, 0x0a,
-	0x1a, 0x52, 0x65, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x65,
-	0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x08, 0x6c,
-	0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e,
-	0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69,
-	0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x08, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72,
-	0x32, 0x85, 0x06, 0x0a, 0x11, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x53,
+	0x09, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x73, 0x22, 0x14, 0x0a, 0x12, 0x4e, 0x65,
+	0x77, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x22, 0x4a, 0x0a, 0x13, 0x4e, 0x65, 0x77, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x08, 0x6c, 0x69, 0x73, 0x74, 0x65,
+	0x6e, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61,
+	0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e,
+	0x65, 0x72, 0x52, 0x08, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x22, 0x29, 0x0a, 0x15,
+	0x52, 0x65, 0x76, 0x6f, 0x6b, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x03, 0x6c, 0x69, 0x64, 0x22, 0x18, 0x0a, 0x16, 0x52, 0x65, 0x76, 0x6f, 0x6b,
+	0x65, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x22, 0x2d, 0x0a, 0x19, 0x52, 0x65, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4c,
+	0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10,
+	0x0a, 0x03, 0x6c, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6c, 0x69, 0x64,
+	0x22, 0x51, 0x0a, 0x1a, 0x52, 0x65, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4c, 0x69,
+	0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33,
+	0x0a, 0x08, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x17, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31,
+	0x2e, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x08, 0x6c, 0x69, 0x73, 0x74, 0x65,
+	0x6e, 0x65, 0x72, 0x22, 0x12, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x43, 0x65, 0x72, 0x74, 0x43, 0x41,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x51, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x43, 0x65,
+	0x72, 0x74, 0x43, 0x41, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3c, 0x0a, 0x0b,
+	0x63, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x1a, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76,
+	0x31, 0x2e, 0x43, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x65, 0x52, 0x0b, 0x63,
+	0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x65, 0x22, 0x18, 0x0a, 0x16, 0x47, 0x65,
+	0x74, 0x43, 0x65, 0x72, 0x74, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x22, 0x57, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x43, 0x65, 0x72, 0x74, 0x4f,
+	0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x3c, 0x0a, 0x0b, 0x63, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e,
+	0x74, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x65,
+	0x52, 0x0b, 0x63, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x65, 0x22, 0x18, 0x0a,
+	0x16, 0x47, 0x65, 0x74, 0x43, 0x65, 0x72, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x57, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x43, 0x65,
+	0x72, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x3c, 0x0a, 0x0b, 0x63, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65,
+	0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63,
+	0x61, 0x74, 0x65, 0x52, 0x0b, 0x63, 0x65, 0x72, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x65,
+	0x32, 0x99, 0x08, 0x0a, 0x11, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x53,
 	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x57, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x4f, 0x70, 0x65,
 	0x72, 0x61, 0x74, 0x6f, 0x72, 0x73, 0x12, 0x22, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d,
 	0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74,
@@ -1004,12 +1319,29 @@ var file_management_v1_management_proto_rawDesc = []byte{
 	0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e,
 	0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65,
 	0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x40, 0x5a, 0x3e, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x32, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x2f, 0x63,
-	0x32, 0x6d, 0x73, 0x68, 0x72, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f,
-	0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2f, 0x76, 0x31, 0x3b, 0x6d, 0x61,
-	0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4e, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x43,
+	0x65, 0x72, 0x74, 0x43, 0x41, 0x12, 0x1f, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x65, 0x72, 0x74, 0x43, 0x41, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d,
+	0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x65, 0x72, 0x74, 0x43, 0x41,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x60, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x43,
+	0x65, 0x72, 0x74, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x25, 0x2e, 0x6d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43,
+	0x65, 0x72, 0x74, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x26, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e,
+	0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x65, 0x72, 0x74, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74,
+	0x6f, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x60, 0x0a, 0x0f, 0x47, 0x65,
+	0x74, 0x43, 0x65, 0x72, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x12, 0x25, 0x2e,
+	0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65,
+	0x74, 0x43, 0x65, 0x72, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e,
+	0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x65, 0x72, 0x74, 0x4c, 0x69, 0x73, 0x74,
+	0x65, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x40, 0x5a, 0x3e,
+	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x32, 0x6d, 0x69, 0x63,
+	0x72, 0x6f, 0x2f, 0x63, 0x32, 0x6d, 0x73, 0x68, 0x72, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x67, 0x65, 0x6e, 0x2f, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2f, 0x76,
+	0x31, 0x3b, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x76, 0x31, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1024,65 +1356,81 @@ func file_management_v1_management_proto_rawDescGZIP() []byte {
 	return file_management_v1_management_proto_rawDescData
 }
 
-var file_management_v1_management_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_management_v1_management_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_management_v1_management_proto_goTypes = []any{
 	(*Operator)(nil),                   // 0: management.v1.Operator
 	(*Listener)(nil),                   // 1: management.v1.Listener
-	(*GetOperatorsRequest)(nil),        // 2: management.v1.GetOperatorsRequest
-	(*GetOperatorsResponse)(nil),       // 3: management.v1.GetOperatorsResponse
-	(*NewOperatorRequest)(nil),         // 4: management.v1.NewOperatorRequest
-	(*NewOperatorResponse)(nil),        // 5: management.v1.NewOperatorResponse
-	(*RevokeOperatorRequest)(nil),      // 6: management.v1.RevokeOperatorRequest
-	(*RevokeOperatorResponse)(nil),     // 7: management.v1.RevokeOperatorResponse
-	(*RegenerateOperatorRequest)(nil),  // 8: management.v1.RegenerateOperatorRequest
-	(*RegenerateOperatorResponse)(nil), // 9: management.v1.RegenerateOperatorResponse
-	(*GetListenersRequest)(nil),        // 10: management.v1.GetListenersRequest
-	(*GetListenersResponse)(nil),       // 11: management.v1.GetListenersResponse
-	(*NewListenerRequest)(nil),         // 12: management.v1.NewListenerRequest
-	(*NewListenerResponse)(nil),        // 13: management.v1.NewListenerResponse
-	(*RevokeListenerRequest)(nil),      // 14: management.v1.RevokeListenerRequest
-	(*RevokeListenerResponse)(nil),     // 15: management.v1.RevokeListenerResponse
-	(*RegenerateListenerRequest)(nil),  // 16: management.v1.RegenerateListenerRequest
-	(*RegenerateListenerResponse)(nil), // 17: management.v1.RegenerateListenerResponse
-	(*wrapperspb.StringValue)(nil),     // 18: google.protobuf.StringValue
-	(*timestamppb.Timestamp)(nil),      // 19: google.protobuf.Timestamp
-	(*wrapperspb.UInt32Value)(nil),     // 20: google.protobuf.UInt32Value
+	(*Certificate)(nil),                // 2: management.v1.Certificate
+	(*GetOperatorsRequest)(nil),        // 3: management.v1.GetOperatorsRequest
+	(*GetOperatorsResponse)(nil),       // 4: management.v1.GetOperatorsResponse
+	(*NewOperatorRequest)(nil),         // 5: management.v1.NewOperatorRequest
+	(*NewOperatorResponse)(nil),        // 6: management.v1.NewOperatorResponse
+	(*RevokeOperatorRequest)(nil),      // 7: management.v1.RevokeOperatorRequest
+	(*RevokeOperatorResponse)(nil),     // 8: management.v1.RevokeOperatorResponse
+	(*RegenerateOperatorRequest)(nil),  // 9: management.v1.RegenerateOperatorRequest
+	(*RegenerateOperatorResponse)(nil), // 10: management.v1.RegenerateOperatorResponse
+	(*GetListenersRequest)(nil),        // 11: management.v1.GetListenersRequest
+	(*GetListenersResponse)(nil),       // 12: management.v1.GetListenersResponse
+	(*NewListenerRequest)(nil),         // 13: management.v1.NewListenerRequest
+	(*NewListenerResponse)(nil),        // 14: management.v1.NewListenerResponse
+	(*RevokeListenerRequest)(nil),      // 15: management.v1.RevokeListenerRequest
+	(*RevokeListenerResponse)(nil),     // 16: management.v1.RevokeListenerResponse
+	(*RegenerateListenerRequest)(nil),  // 17: management.v1.RegenerateListenerRequest
+	(*RegenerateListenerResponse)(nil), // 18: management.v1.RegenerateListenerResponse
+	(*GetCertCARequest)(nil),           // 19: management.v1.GetCertCARequest
+	(*GetCertCAResponse)(nil),          // 20: management.v1.GetCertCAResponse
+	(*GetCertOperatorRequest)(nil),     // 21: management.v1.GetCertOperatorRequest
+	(*GetCertOperatorResponse)(nil),    // 22: management.v1.GetCertOperatorResponse
+	(*GetCertListenerRequest)(nil),     // 23: management.v1.GetCertListenerRequest
+	(*GetCertListenerResponse)(nil),    // 24: management.v1.GetCertListenerResponse
+	(*wrapperspb.StringValue)(nil),     // 25: google.protobuf.StringValue
+	(*timestamppb.Timestamp)(nil),      // 26: google.protobuf.Timestamp
+	(*wrapperspb.UInt32Value)(nil),     // 27: google.protobuf.UInt32Value
 }
 var file_management_v1_management_proto_depIdxs = []int32{
-	18, // 0: management.v1.Operator.token:type_name -> google.protobuf.StringValue
-	19, // 1: management.v1.Operator.last:type_name -> google.protobuf.Timestamp
-	18, // 2: management.v1.Listener.token:type_name -> google.protobuf.StringValue
-	18, // 3: management.v1.Listener.name:type_name -> google.protobuf.StringValue
-	18, // 4: management.v1.Listener.ip:type_name -> google.protobuf.StringValue
-	20, // 5: management.v1.Listener.port:type_name -> google.protobuf.UInt32Value
-	19, // 6: management.v1.Listener.last:type_name -> google.protobuf.Timestamp
+	25, // 0: management.v1.Operator.token:type_name -> google.protobuf.StringValue
+	26, // 1: management.v1.Operator.last:type_name -> google.protobuf.Timestamp
+	25, // 2: management.v1.Listener.token:type_name -> google.protobuf.StringValue
+	25, // 3: management.v1.Listener.name:type_name -> google.protobuf.StringValue
+	25, // 4: management.v1.Listener.ip:type_name -> google.protobuf.StringValue
+	27, // 5: management.v1.Listener.port:type_name -> google.protobuf.UInt32Value
+	26, // 6: management.v1.Listener.last:type_name -> google.protobuf.Timestamp
 	0,  // 7: management.v1.GetOperatorsResponse.operators:type_name -> management.v1.Operator
 	0,  // 8: management.v1.NewOperatorResponse.operator:type_name -> management.v1.Operator
 	0,  // 9: management.v1.RegenerateOperatorResponse.operator:type_name -> management.v1.Operator
 	1,  // 10: management.v1.GetListenersResponse.listeners:type_name -> management.v1.Listener
 	1,  // 11: management.v1.NewListenerResponse.listener:type_name -> management.v1.Listener
 	1,  // 12: management.v1.RegenerateListenerResponse.listener:type_name -> management.v1.Listener
-	2,  // 13: management.v1.ManagementService.GetOperators:input_type -> management.v1.GetOperatorsRequest
-	4,  // 14: management.v1.ManagementService.NewOperator:input_type -> management.v1.NewOperatorRequest
-	6,  // 15: management.v1.ManagementService.RevokeOperator:input_type -> management.v1.RevokeOperatorRequest
-	8,  // 16: management.v1.ManagementService.RegenerateOperator:input_type -> management.v1.RegenerateOperatorRequest
-	10, // 17: management.v1.ManagementService.GetListeners:input_type -> management.v1.GetListenersRequest
-	12, // 18: management.v1.ManagementService.NewListener:input_type -> management.v1.NewListenerRequest
-	14, // 19: management.v1.ManagementService.RevokeListener:input_type -> management.v1.RevokeListenerRequest
-	16, // 20: management.v1.ManagementService.RegenerateListener:input_type -> management.v1.RegenerateListenerRequest
-	3,  // 21: management.v1.ManagementService.GetOperators:output_type -> management.v1.GetOperatorsResponse
-	5,  // 22: management.v1.ManagementService.NewOperator:output_type -> management.v1.NewOperatorResponse
-	7,  // 23: management.v1.ManagementService.RevokeOperator:output_type -> management.v1.RevokeOperatorResponse
-	9,  // 24: management.v1.ManagementService.RegenerateOperator:output_type -> management.v1.RegenerateOperatorResponse
-	11, // 25: management.v1.ManagementService.GetListeners:output_type -> management.v1.GetListenersResponse
-	13, // 26: management.v1.ManagementService.NewListener:output_type -> management.v1.NewListenerResponse
-	15, // 27: management.v1.ManagementService.RevokeListener:output_type -> management.v1.RevokeListenerResponse
-	17, // 28: management.v1.ManagementService.RegenerateListener:output_type -> management.v1.RegenerateListenerResponse
-	21, // [21:29] is the sub-list for method output_type
-	13, // [13:21] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	2,  // 13: management.v1.GetCertCAResponse.certificate:type_name -> management.v1.Certificate
+	2,  // 14: management.v1.GetCertOperatorResponse.certificate:type_name -> management.v1.Certificate
+	2,  // 15: management.v1.GetCertListenerResponse.certificate:type_name -> management.v1.Certificate
+	3,  // 16: management.v1.ManagementService.GetOperators:input_type -> management.v1.GetOperatorsRequest
+	5,  // 17: management.v1.ManagementService.NewOperator:input_type -> management.v1.NewOperatorRequest
+	7,  // 18: management.v1.ManagementService.RevokeOperator:input_type -> management.v1.RevokeOperatorRequest
+	9,  // 19: management.v1.ManagementService.RegenerateOperator:input_type -> management.v1.RegenerateOperatorRequest
+	11, // 20: management.v1.ManagementService.GetListeners:input_type -> management.v1.GetListenersRequest
+	13, // 21: management.v1.ManagementService.NewListener:input_type -> management.v1.NewListenerRequest
+	15, // 22: management.v1.ManagementService.RevokeListener:input_type -> management.v1.RevokeListenerRequest
+	17, // 23: management.v1.ManagementService.RegenerateListener:input_type -> management.v1.RegenerateListenerRequest
+	19, // 24: management.v1.ManagementService.GetCertCA:input_type -> management.v1.GetCertCARequest
+	21, // 25: management.v1.ManagementService.GetCertOperator:input_type -> management.v1.GetCertOperatorRequest
+	23, // 26: management.v1.ManagementService.GetCertListener:input_type -> management.v1.GetCertListenerRequest
+	4,  // 27: management.v1.ManagementService.GetOperators:output_type -> management.v1.GetOperatorsResponse
+	6,  // 28: management.v1.ManagementService.NewOperator:output_type -> management.v1.NewOperatorResponse
+	8,  // 29: management.v1.ManagementService.RevokeOperator:output_type -> management.v1.RevokeOperatorResponse
+	10, // 30: management.v1.ManagementService.RegenerateOperator:output_type -> management.v1.RegenerateOperatorResponse
+	12, // 31: management.v1.ManagementService.GetListeners:output_type -> management.v1.GetListenersResponse
+	14, // 32: management.v1.ManagementService.NewListener:output_type -> management.v1.NewListenerResponse
+	16, // 33: management.v1.ManagementService.RevokeListener:output_type -> management.v1.RevokeListenerResponse
+	18, // 34: management.v1.ManagementService.RegenerateListener:output_type -> management.v1.RegenerateListenerResponse
+	20, // 35: management.v1.ManagementService.GetCertCA:output_type -> management.v1.GetCertCAResponse
+	22, // 36: management.v1.ManagementService.GetCertOperator:output_type -> management.v1.GetCertOperatorResponse
+	24, // 37: management.v1.ManagementService.GetCertListener:output_type -> management.v1.GetCertListenerResponse
+	27, // [27:38] is the sub-list for method output_type
+	16, // [16:27] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_management_v1_management_proto_init() }
@@ -1096,7 +1444,7 @@ func file_management_v1_management_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_management_v1_management_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
