@@ -1,0 +1,122 @@
+# включает debug режим логирования, может быть true/false
+# defaults: true
+debug: true
+
+# настройки PKI
+# секция может быть удалена, существуют дефолты для каждого поля
+pki:
+  ca:
+    # серийный номер для генерации
+    serial: 1
+    subject:
+      # организационный юнит
+      ou: c2m Root CA
+      # организация
+      o: c2micro.dev
+      # common name
+      cn: c2micro.dev
+      # страна
+      c: RU
+      # город
+      l: Moscow
+  listener:
+    serial: 2
+    subject:
+      o: c2m
+      c: RU
+      cn: c2micro.dev
+      p: MSK
+      l: Moscow
+  management:
+    serial: 3
+    subject:
+      ou: c2m Root CA
+      o: c2micro.dev
+      cn: c2micro.dev
+      c: RU
+      l: Moscow
+
+# секция отвечает за настройки grpc-сервера для management интерфейса
+management:
+  # ip адрес, на который будет забинжен management сервер
+  ip: 127.0.0.1
+  # порт, на который будет забинжен management сервер
+  port: 51233
+
+# секция отвечает за настройки grpc-сервера для operator'ов
+operator:
+  # ip адерс, на который будет забинжен operator сервер
+  # required
+  ip: 127.0.0.1
+  # порт, на который будет забинжен operator сервер
+  # required
+  port: 51234
+
+# секция отвечает за настройки grpc-сервера для listener'ов
+listener:
+  # ip адрес, на который будет забинжен listener сервер
+  # required
+  ip: 127.0.0.1
+  # порт, на который будет забинжен listener сервер
+  # required
+  port: 51235
+
+# секция отвечает на настройки подключения к БД
+# необходимо выбрать один(!) требующийся драйвер: sqlite,postgresql
+db:
+  # секция для sqlite
+  sqlite:
+    path: /tmp/server.db
+  # секция для postgresql
+  #postgresql:
+  #  host: localhost
+  #  port: 5432
+  #  user: c2m
+  #  db: c2m
+  #  password: c2m
+
+# вебхуки для нотификации о регистрации нового бикона
+# могут быть выбраны одновременно несколько: telegram,vkteams
+# в качестве placeholder'ов доступны:
+# {{ .Bid }} - ID бикона
+# {{ .Username }} - имя пользователя
+# {{ .Hostname }} - имя хоста
+# {{ .Domain }} - имя домена
+# {{ .ExternalIP }} - внешний IP адрес
+# {{ .InternalIP }} - внутренний IP адрес
+# {{ .Privilged }} - является ли процесс привилегированным
+webhook:
+  # отправка нотификаций в telegram. Поддерживается ТОЛЬКО MarkdownV2. 
+  telegram:
+    enabled: false
+    # токен бота. Берется из @BotFather
+    token: "[masked]"
+    # ID чата. Можно взять через @MissRose_bot
+    chat_id: "[masked]"
+    # сообщение с доступными placeholder'ами
+    text: |
+      BeaconID: {{ .Bid }}
+      ExtIP: {{ .ExternalIP }}
+      IntIP: {{ .InternalIP }}
+      Username: {{ .Username }}
+      Hostname: {{ .Hostname }}
+      Domain: {{ .Domain }}
+      Privileged: {{ .Privileged }}
+  # отправка нотификаций в vkteams. Поддерживается ТОЛЬКО MarkdownV2. 
+  vkteams:
+    enabled: false
+    # токен бота, берется из @Metabot
+    token: "[masked]"
+    # ID чата
+    chat_id: "[masked]"
+    # API ендпоинт, использующийся для обработки запросов к боту
+    api: https://api.teams.example.com/bot/v1/
+    # сообщение с доступными placeholder'ами
+    text: |
+      BeaconID: {{ .Bid }}
+      ExtIP: {{ .ExternalIP }}
+      IntIP: {{ .InternalIP }}
+      Username: {{ .Username }}
+      Hostname: {{ .Hostname }}
+      Domain: {{ .Domain }}
+      Privileged: {{ .Privileged }}
