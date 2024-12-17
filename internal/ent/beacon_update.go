@@ -11,13 +11,13 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
+	"github.com/c2micro/c2mshr/defaults"
 	"github.com/c2micro/c2msrv/internal/ent/beacon"
 	"github.com/c2micro/c2msrv/internal/ent/group"
 	"github.com/c2micro/c2msrv/internal/ent/listener"
 	"github.com/c2micro/c2msrv/internal/ent/predicate"
 	"github.com/c2micro/c2msrv/internal/ent/task"
 	"github.com/c2micro/c2msrv/internal/types"
-	"github.com/c2micro/c2mshr/defaults"
 )
 
 // BeaconUpdate is the builder for updating Beacon entities.

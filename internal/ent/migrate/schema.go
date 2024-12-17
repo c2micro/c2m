@@ -94,7 +94,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "username", Type: field.TypeString, Nullable: true, Size: 256},
-		{Name: "password", Type: field.TypeString, Nullable: true, Size: 256},
+		{Name: "secret", Type: field.TypeString, Nullable: true, Size: 4096},
 		{Name: "realm", Type: field.TypeString, Nullable: true, Size: 256},
 		{Name: "host", Type: field.TypeString, Nullable: true, Size: 256},
 		{Name: "note", Type: field.TypeString, Nullable: true, Size: 256},

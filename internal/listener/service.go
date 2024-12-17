@@ -611,7 +611,7 @@ func (s *server) GetTask(ctx context.Context, req *listenerv1.GetTaskRequest) (*
 // Сохранение результата выполнения таска
 func (s *server) PutResult(ctx context.Context, req *listenerv1.PutResultRequest) (*listenerv1.PutResultResponse, error) {
 	lid := grpcauth.ListenerFromCtx(ctx)
-	lg := s.lg.Named("GetTask").With(zap.Int("listener-id", lid))
+	lg := s.lg.Named("PutResult").With(zap.Int("listener-id", lid))
 
 	// ищем бикон по его id
 	b, err := s.db.Beacon.
@@ -703,6 +703,10 @@ func (s *server) PutResult(ctx context.Context, req *listenerv1.PutResultRequest
 			if req.GetOutput() != nil {
 				data = append(data, req.GetOutput().GetValue()...)
 			}
+		}
+		// чтобы избежать NOT NULL constraint
+		if data == nil {
+			data = []byte{}
 		}
 		// сохраняем блоб
 		h := utils.CalcHash(data)

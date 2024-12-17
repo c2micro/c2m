@@ -76,16 +76,16 @@ func (cc *CredentialCreate) SetNillableUsername(s *string) *CredentialCreate {
 	return cc
 }
 
-// SetPassword sets the "password" field.
-func (cc *CredentialCreate) SetPassword(s string) *CredentialCreate {
-	cc.mutation.SetPassword(s)
+// SetSecret sets the "secret" field.
+func (cc *CredentialCreate) SetSecret(s string) *CredentialCreate {
+	cc.mutation.SetSecret(s)
 	return cc
 }
 
-// SetNillablePassword sets the "password" field if the given value is not nil.
-func (cc *CredentialCreate) SetNillablePassword(s *string) *CredentialCreate {
+// SetNillableSecret sets the "secret" field if the given value is not nil.
+func (cc *CredentialCreate) SetNillableSecret(s *string) *CredentialCreate {
 	if s != nil {
-		cc.SetPassword(*s)
+		cc.SetSecret(*s)
 	}
 	return cc
 }
@@ -217,9 +217,9 @@ func (cc *CredentialCreate) check() error {
 			return &ValidationError{Name: "username", err: fmt.Errorf(`ent: validator failed for field "Credential.username": %w`, err)}
 		}
 	}
-	if v, ok := cc.mutation.Password(); ok {
-		if err := credential.PasswordValidator(v); err != nil {
-			return &ValidationError{Name: "password", err: fmt.Errorf(`ent: validator failed for field "Credential.password": %w`, err)}
+	if v, ok := cc.mutation.Secret(); ok {
+		if err := credential.SecretValidator(v); err != nil {
+			return &ValidationError{Name: "secret", err: fmt.Errorf(`ent: validator failed for field "Credential.secret": %w`, err)}
 		}
 	}
 	if v, ok := cc.mutation.Realm(); ok {
@@ -282,9 +282,9 @@ func (cc *CredentialCreate) createSpec() (*Credential, *sqlgraph.CreateSpec) {
 		_spec.SetField(credential.FieldUsername, field.TypeString, value)
 		_node.Username = value
 	}
-	if value, ok := cc.mutation.Password(); ok {
-		_spec.SetField(credential.FieldPassword, field.TypeString, value)
-		_node.Password = value
+	if value, ok := cc.mutation.Secret(); ok {
+		_spec.SetField(credential.FieldSecret, field.TypeString, value)
+		_node.Secret = value
 	}
 	if value, ok := cc.mutation.Realm(); ok {
 		_spec.SetField(credential.FieldRealm, field.TypeString, value)

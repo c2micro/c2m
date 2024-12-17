@@ -22,8 +22,8 @@ const (
 	FieldDeletedAt = "deleted_at"
 	// FieldUsername holds the string denoting the username field in the database.
 	FieldUsername = "username"
-	// FieldPassword holds the string denoting the password field in the database.
-	FieldPassword = "password"
+	// FieldSecret holds the string denoting the secret field in the database.
+	FieldSecret = "secret"
 	// FieldRealm holds the string denoting the realm field in the database.
 	FieldRealm = "realm"
 	// FieldHost holds the string denoting the host field in the database.
@@ -43,7 +43,7 @@ var Columns = []string{
 	FieldUpdatedAt,
 	FieldDeletedAt,
 	FieldUsername,
-	FieldPassword,
+	FieldSecret,
 	FieldRealm,
 	FieldHost,
 	FieldNote,
@@ -76,8 +76,8 @@ var (
 	UpdateDefaultUpdatedAt func() time.Time
 	// UsernameValidator is a validator for the "username" field. It is called by the builders before save.
 	UsernameValidator func(string) error
-	// PasswordValidator is a validator for the "password" field. It is called by the builders before save.
-	PasswordValidator func(string) error
+	// SecretValidator is a validator for the "secret" field. It is called by the builders before save.
+	SecretValidator func(string) error
 	// RealmValidator is a validator for the "realm" field. It is called by the builders before save.
 	RealmValidator func(string) error
 	// HostValidator is a validator for the "host" field. It is called by the builders before save.
@@ -116,9 +116,9 @@ func ByUsername(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldUsername, opts...).ToFunc()
 }
 
-// ByPassword orders the results by the password field.
-func ByPassword(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldPassword, opts...).ToFunc()
+// BySecret orders the results by the secret field.
+func BySecret(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldSecret, opts...).ToFunc()
 }
 
 // ByRealm orders the results by the realm field.

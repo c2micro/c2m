@@ -74,23 +74,23 @@ func (cu *CredentialUpdate) ClearUsername() *CredentialUpdate {
 	return cu
 }
 
-// SetPassword sets the "password" field.
-func (cu *CredentialUpdate) SetPassword(s string) *CredentialUpdate {
-	cu.mutation.SetPassword(s)
+// SetSecret sets the "secret" field.
+func (cu *CredentialUpdate) SetSecret(s string) *CredentialUpdate {
+	cu.mutation.SetSecret(s)
 	return cu
 }
 
-// SetNillablePassword sets the "password" field if the given value is not nil.
-func (cu *CredentialUpdate) SetNillablePassword(s *string) *CredentialUpdate {
+// SetNillableSecret sets the "secret" field if the given value is not nil.
+func (cu *CredentialUpdate) SetNillableSecret(s *string) *CredentialUpdate {
 	if s != nil {
-		cu.SetPassword(*s)
+		cu.SetSecret(*s)
 	}
 	return cu
 }
 
-// ClearPassword clears the value of the "password" field.
-func (cu *CredentialUpdate) ClearPassword() *CredentialUpdate {
-	cu.mutation.ClearPassword()
+// ClearSecret clears the value of the "secret" field.
+func (cu *CredentialUpdate) ClearSecret() *CredentialUpdate {
+	cu.mutation.ClearSecret()
 	return cu
 }
 
@@ -229,9 +229,9 @@ func (cu *CredentialUpdate) check() error {
 			return &ValidationError{Name: "username", err: fmt.Errorf(`ent: validator failed for field "Credential.username": %w`, err)}
 		}
 	}
-	if v, ok := cu.mutation.Password(); ok {
-		if err := credential.PasswordValidator(v); err != nil {
-			return &ValidationError{Name: "password", err: fmt.Errorf(`ent: validator failed for field "Credential.password": %w`, err)}
+	if v, ok := cu.mutation.Secret(); ok {
+		if err := credential.SecretValidator(v); err != nil {
+			return &ValidationError{Name: "secret", err: fmt.Errorf(`ent: validator failed for field "Credential.secret": %w`, err)}
 		}
 	}
 	if v, ok := cu.mutation.Realm(); ok {
@@ -279,11 +279,11 @@ func (cu *CredentialUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if cu.mutation.UsernameCleared() {
 		_spec.ClearField(credential.FieldUsername, field.TypeString)
 	}
-	if value, ok := cu.mutation.Password(); ok {
-		_spec.SetField(credential.FieldPassword, field.TypeString, value)
+	if value, ok := cu.mutation.Secret(); ok {
+		_spec.SetField(credential.FieldSecret, field.TypeString, value)
 	}
-	if cu.mutation.PasswordCleared() {
-		_spec.ClearField(credential.FieldPassword, field.TypeString)
+	if cu.mutation.SecretCleared() {
+		_spec.ClearField(credential.FieldSecret, field.TypeString)
 	}
 	if value, ok := cu.mutation.Realm(); ok {
 		_spec.SetField(credential.FieldRealm, field.TypeString, value)
@@ -375,23 +375,23 @@ func (cuo *CredentialUpdateOne) ClearUsername() *CredentialUpdateOne {
 	return cuo
 }
 
-// SetPassword sets the "password" field.
-func (cuo *CredentialUpdateOne) SetPassword(s string) *CredentialUpdateOne {
-	cuo.mutation.SetPassword(s)
+// SetSecret sets the "secret" field.
+func (cuo *CredentialUpdateOne) SetSecret(s string) *CredentialUpdateOne {
+	cuo.mutation.SetSecret(s)
 	return cuo
 }
 
-// SetNillablePassword sets the "password" field if the given value is not nil.
-func (cuo *CredentialUpdateOne) SetNillablePassword(s *string) *CredentialUpdateOne {
+// SetNillableSecret sets the "secret" field if the given value is not nil.
+func (cuo *CredentialUpdateOne) SetNillableSecret(s *string) *CredentialUpdateOne {
 	if s != nil {
-		cuo.SetPassword(*s)
+		cuo.SetSecret(*s)
 	}
 	return cuo
 }
 
-// ClearPassword clears the value of the "password" field.
-func (cuo *CredentialUpdateOne) ClearPassword() *CredentialUpdateOne {
-	cuo.mutation.ClearPassword()
+// ClearSecret clears the value of the "secret" field.
+func (cuo *CredentialUpdateOne) ClearSecret() *CredentialUpdateOne {
+	cuo.mutation.ClearSecret()
 	return cuo
 }
 
@@ -543,9 +543,9 @@ func (cuo *CredentialUpdateOne) check() error {
 			return &ValidationError{Name: "username", err: fmt.Errorf(`ent: validator failed for field "Credential.username": %w`, err)}
 		}
 	}
-	if v, ok := cuo.mutation.Password(); ok {
-		if err := credential.PasswordValidator(v); err != nil {
-			return &ValidationError{Name: "password", err: fmt.Errorf(`ent: validator failed for field "Credential.password": %w`, err)}
+	if v, ok := cuo.mutation.Secret(); ok {
+		if err := credential.SecretValidator(v); err != nil {
+			return &ValidationError{Name: "secret", err: fmt.Errorf(`ent: validator failed for field "Credential.secret": %w`, err)}
 		}
 	}
 	if v, ok := cuo.mutation.Realm(); ok {
@@ -610,11 +610,11 @@ func (cuo *CredentialUpdateOne) sqlSave(ctx context.Context) (_node *Credential,
 	if cuo.mutation.UsernameCleared() {
 		_spec.ClearField(credential.FieldUsername, field.TypeString)
 	}
-	if value, ok := cuo.mutation.Password(); ok {
-		_spec.SetField(credential.FieldPassword, field.TypeString, value)
+	if value, ok := cuo.mutation.Secret(); ok {
+		_spec.SetField(credential.FieldSecret, field.TypeString, value)
 	}
-	if cuo.mutation.PasswordCleared() {
-		_spec.ClearField(credential.FieldPassword, field.TypeString)
+	if cuo.mutation.SecretCleared() {
+		_spec.ClearField(credential.FieldSecret, field.TypeString)
 	}
 	if value, ok := cuo.mutation.Realm(); ok {
 		_spec.SetField(credential.FieldRealm, field.TypeString, value)

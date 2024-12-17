@@ -151,10 +151,10 @@ func init() {
 	credentialDescUsername := credentialFields[0].Descriptor()
 	// credential.UsernameValidator is a validator for the "username" field. It is called by the builders before save.
 	credential.UsernameValidator = credentialDescUsername.Validators[0].(func(string) error)
-	// credentialDescPassword is the schema descriptor for password field.
-	credentialDescPassword := credentialFields[1].Descriptor()
-	// credential.PasswordValidator is a validator for the "password" field. It is called by the builders before save.
-	credential.PasswordValidator = credentialDescPassword.Validators[0].(func(string) error)
+	// credentialDescSecret is the schema descriptor for secret field.
+	credentialDescSecret := credentialFields[1].Descriptor()
+	// credential.SecretValidator is a validator for the "secret" field. It is called by the builders before save.
+	credential.SecretValidator = credentialDescSecret.Validators[0].(func(string) error)
 	// credentialDescRealm is the schema descriptor for realm field.
 	credentialDescRealm := credentialFields[2].Descriptor()
 	// credential.RealmValidator is a validator for the "realm" field. It is called by the builders before save.

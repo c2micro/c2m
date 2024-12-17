@@ -58,19 +58,24 @@ func DefaultCodeToLevel(code codes.Code) zapcore.Level {
 
 func UnaryServerInterceptor(lg *zap.Logger) grpc.UnaryServerInterceptor {
 	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
-		// время старта исполнения
 		tStart := time.Now()
-		// процессинг самого запроса
+		// выполнение запроса
 		resp, err := handler(zctx.Base(ctx, lg), req)
-		// временная дельта на исполнение
 		t := time.Since(tStart)
-		// код ошибки
-		code := status.Code(err)
-		// лог событие
+		var code codes.Code
+		var msg string
+		if s, ok := status.FromError(err); ok {
+			code = s.Code()
+			msg = s.Message()
+		} else {
+			code = status.Code(err)
+			msg = "<unable extract message from error>"
+		}
 		go lg.Log(DefaultCodeToLevel(code), "unary call",
 			zap.String("method", info.FullMethod),
 			zap.String("code", code.String()),
 			zap.Duration("time", t),
+			zap.String("message", msg),
 		)
 		return resp, err
 	}
@@ -78,19 +83,25 @@ func UnaryServerInterceptor(lg *zap.Logger) grpc.UnaryServerInterceptor {
 
 func StreamServerInterceptor(lg *zap.Logger) grpc.StreamServerInterceptor {
 	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) error {
-		// время старта исполнения
 		tStart := time.Now()
 		// выполнение запроса
 		err := handler(srv, &middleware.SrvStream{ServerStream: ss, Ctx: zctx.Base(ss.Context(), lg)})
-		// временная дельта на исполнение
 		t := time.Since(tStart)
-		// код ошибки
-		code := status.Code(err)
+		var code codes.Code
+		var msg string
+		if s, ok := status.FromError(err); ok {
+			code = s.Code()
+			msg = s.Message()
+		} else {
+			code = status.Code(err)
+			msg = "<unable extract message from error>"
+		}
 		// лог событие
 		go lg.Log(DefaultCodeToLevel(code), "stream call",
 			zap.String("method", info.FullMethod),
 			zap.String("code", code.String()),
 			zap.Duration("time", t),
+			zap.String("message", msg),
 		)
 		return err
 	}

@@ -11,6 +11,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
+	"github.com/c2micro/c2mshr/defaults"
 	"github.com/c2micro/c2msrv/internal/ent/beacon"
 	"github.com/c2micro/c2msrv/internal/ent/blobber"
 	"github.com/c2micro/c2msrv/internal/ent/chat"
@@ -23,7 +24,6 @@ import (
 	"github.com/c2micro/c2msrv/internal/ent/predicate"
 	"github.com/c2micro/c2msrv/internal/ent/task"
 	"github.com/c2micro/c2msrv/internal/types"
-	"github.com/c2micro/c2mshr/defaults"
 )
 
 const (
@@ -3563,7 +3563,7 @@ type CredentialMutation struct {
 	updated_at    *time.Time
 	deleted_at    *time.Time
 	username      *string
-	password      *string
+	secret        *string
 	realm         *string
 	host          *string
 	note          *string
@@ -3843,53 +3843,53 @@ func (m *CredentialMutation) ResetUsername() {
 	delete(m.clearedFields, credential.FieldUsername)
 }
 
-// SetPassword sets the "password" field.
-func (m *CredentialMutation) SetPassword(s string) {
-	m.password = &s
+// SetSecret sets the "secret" field.
+func (m *CredentialMutation) SetSecret(s string) {
+	m.secret = &s
 }
 
-// Password returns the value of the "password" field in the mutation.
-func (m *CredentialMutation) Password() (r string, exists bool) {
-	v := m.password
+// Secret returns the value of the "secret" field in the mutation.
+func (m *CredentialMutation) Secret() (r string, exists bool) {
+	v := m.secret
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldPassword returns the old "password" field's value of the Credential entity.
+// OldSecret returns the old "secret" field's value of the Credential entity.
 // If the Credential object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CredentialMutation) OldPassword(ctx context.Context) (v string, err error) {
+func (m *CredentialMutation) OldSecret(ctx context.Context) (v string, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldPassword is only allowed on UpdateOne operations")
+		return v, errors.New("OldSecret is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldPassword requires an ID field in the mutation")
+		return v, errors.New("OldSecret requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldPassword: %w", err)
+		return v, fmt.Errorf("querying old value for OldSecret: %w", err)
 	}
-	return oldValue.Password, nil
+	return oldValue.Secret, nil
 }
 
-// ClearPassword clears the value of the "password" field.
-func (m *CredentialMutation) ClearPassword() {
-	m.password = nil
-	m.clearedFields[credential.FieldPassword] = struct{}{}
+// ClearSecret clears the value of the "secret" field.
+func (m *CredentialMutation) ClearSecret() {
+	m.secret = nil
+	m.clearedFields[credential.FieldSecret] = struct{}{}
 }
 
-// PasswordCleared returns if the "password" field was cleared in this mutation.
-func (m *CredentialMutation) PasswordCleared() bool {
-	_, ok := m.clearedFields[credential.FieldPassword]
+// SecretCleared returns if the "secret" field was cleared in this mutation.
+func (m *CredentialMutation) SecretCleared() bool {
+	_, ok := m.clearedFields[credential.FieldSecret]
 	return ok
 }
 
-// ResetPassword resets all changes to the "password" field.
-func (m *CredentialMutation) ResetPassword() {
-	m.password = nil
-	delete(m.clearedFields, credential.FieldPassword)
+// ResetSecret resets all changes to the "secret" field.
+func (m *CredentialMutation) ResetSecret() {
+	m.secret = nil
+	delete(m.clearedFields, credential.FieldSecret)
 }
 
 // SetRealm sets the "realm" field.
@@ -4142,8 +4142,8 @@ func (m *CredentialMutation) Fields() []string {
 	if m.username != nil {
 		fields = append(fields, credential.FieldUsername)
 	}
-	if m.password != nil {
-		fields = append(fields, credential.FieldPassword)
+	if m.secret != nil {
+		fields = append(fields, credential.FieldSecret)
 	}
 	if m.realm != nil {
 		fields = append(fields, credential.FieldRealm)
@@ -4173,8 +4173,8 @@ func (m *CredentialMutation) Field(name string) (ent.Value, bool) {
 		return m.DeletedAt()
 	case credential.FieldUsername:
 		return m.Username()
-	case credential.FieldPassword:
-		return m.Password()
+	case credential.FieldSecret:
+		return m.Secret()
 	case credential.FieldRealm:
 		return m.Realm()
 	case credential.FieldHost:
@@ -4200,8 +4200,8 @@ func (m *CredentialMutation) OldField(ctx context.Context, name string) (ent.Val
 		return m.OldDeletedAt(ctx)
 	case credential.FieldUsername:
 		return m.OldUsername(ctx)
-	case credential.FieldPassword:
-		return m.OldPassword(ctx)
+	case credential.FieldSecret:
+		return m.OldSecret(ctx)
 	case credential.FieldRealm:
 		return m.OldRealm(ctx)
 	case credential.FieldHost:
@@ -4247,12 +4247,12 @@ func (m *CredentialMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetUsername(v)
 		return nil
-	case credential.FieldPassword:
+	case credential.FieldSecret:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetPassword(v)
+		m.SetSecret(v)
 		return nil
 	case credential.FieldRealm:
 		v, ok := value.(string)
@@ -4333,8 +4333,8 @@ func (m *CredentialMutation) ClearedFields() []string {
 	if m.FieldCleared(credential.FieldUsername) {
 		fields = append(fields, credential.FieldUsername)
 	}
-	if m.FieldCleared(credential.FieldPassword) {
-		fields = append(fields, credential.FieldPassword)
+	if m.FieldCleared(credential.FieldSecret) {
+		fields = append(fields, credential.FieldSecret)
 	}
 	if m.FieldCleared(credential.FieldRealm) {
 		fields = append(fields, credential.FieldRealm)
@@ -4365,8 +4365,8 @@ func (m *CredentialMutation) ClearField(name string) error {
 	case credential.FieldUsername:
 		m.ClearUsername()
 		return nil
-	case credential.FieldPassword:
-		m.ClearPassword()
+	case credential.FieldSecret:
+		m.ClearSecret()
 		return nil
 	case credential.FieldRealm:
 		m.ClearRealm()
@@ -4397,8 +4397,8 @@ func (m *CredentialMutation) ResetField(name string) error {
 	case credential.FieldUsername:
 		m.ResetUsername()
 		return nil
-	case credential.FieldPassword:
-		m.ResetPassword()
+	case credential.FieldSecret:
+		m.ResetSecret()
 		return nil
 	case credential.FieldRealm:
 		m.ResetRealm()

@@ -190,7 +190,7 @@ func ToCredentialResponse(credential *ent.Credential) *operatorv1.CredentialResp
 	return &operatorv1.CredentialResponse{
 		Cid:       int64(credential.ID),
 		Username:  wrapperspb.String(credential.Username),
-		Password:  wrapperspb.String(credential.Password),
+		Password:  wrapperspb.String(credential.Secret),
 		Realm:     wrapperspb.String(credential.Realm),
 		Host:      wrapperspb.String(credential.Host),
 		CreatedAt: timestamppb.New(credential.CreatedAt),

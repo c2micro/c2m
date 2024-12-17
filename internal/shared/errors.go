@@ -10,6 +10,7 @@ const (
 	ErrorSaveGroupMessage             = "save task group's message"
 	ErrorSaveGroupTask                = "save task group's task"
 	ErrorSaveGroup                    = "save task group"
+	ErrorCloseGroup                   = "close task group"
 	ErrorSaveOperator                 = "save operator"
 	ErrorSaveBlob                     = "save blob"
 	ErrorSaveBeacon                   = "save beacon"

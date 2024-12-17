@@ -26,7 +26,7 @@ type Credential struct {
 	// username of credential
 	Username string `json:"username,omitempty"`
 	// password/hash/secret
-	Password string `json:"password,omitempty"`
+	Secret string `json:"secret,omitempty"`
 	// realm of host (or zone where credentials are valid)
 	Realm string `json:"realm,omitempty"`
 	// host from which creds has been extracted
@@ -45,7 +45,7 @@ func (*Credential) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case credential.FieldID, credential.FieldColor:
 			values[i] = new(sql.NullInt64)
-		case credential.FieldUsername, credential.FieldPassword, credential.FieldRealm, credential.FieldHost, credential.FieldNote:
+		case credential.FieldUsername, credential.FieldSecret, credential.FieldRealm, credential.FieldHost, credential.FieldNote:
 			values[i] = new(sql.NullString)
 		case credential.FieldCreatedAt, credential.FieldUpdatedAt, credential.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -94,11 +94,11 @@ func (c *Credential) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				c.Username = value.String
 			}
-		case credential.FieldPassword:
+		case credential.FieldSecret:
 			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field password", values[i])
+				return fmt.Errorf("unexpected type %T for field secret", values[i])
 			} else if value.Valid {
-				c.Password = value.String
+				c.Secret = value.String
 			}
 		case credential.FieldRealm:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -172,8 +172,8 @@ func (c *Credential) String() string {
 	builder.WriteString("username=")
 	builder.WriteString(c.Username)
 	builder.WriteString(", ")
-	builder.WriteString("password=")
-	builder.WriteString(c.Password)
+	builder.WriteString("secret=")
+	builder.WriteString(c.Secret)
 	builder.WriteString(", ")
 	builder.WriteString("realm=")
 	builder.WriteString(c.Realm)

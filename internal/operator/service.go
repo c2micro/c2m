@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/c2micro/c2mshr/defaults"
-	def "github.com/c2micro/c2mshr/defaults"
 	operatorv1 "github.com/c2micro/c2mshr/proto/gen/operator/v1"
 	"github.com/c2micro/c2msrv/internal/constants"
 	"github.com/c2micro/c2msrv/internal/ent"
@@ -1064,9 +1063,9 @@ func (s *server) NewCredential(ctx context.Context, req *operatorv1.NewCredentia
 	// password
 	if req.GetPassword() != nil {
 		if len(req.GetPassword().GetValue()) > defaults.CredentialSecretMaxLength {
-			c.SetPassword(req.GetPassword().GetValue()[:defaults.CredentialSecretMaxLength])
+			c.SetSecret(req.GetPassword().GetValue()[:defaults.CredentialSecretMaxLength])
 		} else {
-			c.SetPassword(req.GetPassword().GetValue())
+			c.SetSecret(req.GetPassword().GetValue())
 		}
 	}
 	// realm
@@ -1172,6 +1171,13 @@ func (s *server) NewGroup(ss operatorv1.OperatorService_NewGroupServer) error {
 		Visible: g.Visible,
 	})
 
+	defer func() {
+		// закрытие таск группы при закрытии стрима
+		if _, err := g.Update().SetClosedAt(time.Now()).Save(ctx); err != nil {
+			lg.Error(shared.ErrorCloseGroup, zap.Error(err))
+		}
+	}()
+
 	for {
 		msg, err := ss.Recv()
 		if err != nil {
@@ -1197,7 +1203,7 @@ func (s *server) NewGroup(ss operatorv1.OperatorService_NewGroupServer) error {
 				Create().
 				SetGroup(g).
 				SetMessage(msg.GetMessage().GetMsg()).
-				SetType(def.TaskMessage(msg.GetMessage().GetType())).
+				SetType(defaults.TaskMessage(msg.GetMessage().GetType())).
 				Save(ctx)
 			if err != nil {
 				lg.Error(shared.ErrorSaveGroupMessage, zap.Error(err))
@@ -1218,57 +1224,57 @@ func (s *server) NewGroup(ss operatorv1.OperatorService_NewGroupServer) error {
 		if msg.GetTask() != nil {
 			var raw []byte
 
-			c := def.Capability(msg.GetTask().GetCap())
+			c := defaults.Capability(msg.GetTask().GetCap())
 			switch c {
-			case def.CAP_SLEEP:
+			case defaults.CAP_SLEEP:
 				raw, err = c.Marshal(msg.GetTask().GetSleep())
-			case def.CAP_LS:
+			case defaults.CAP_LS:
 				raw, err = c.Marshal(msg.GetTask().GetLs())
-			case def.CAP_PWD:
+			case defaults.CAP_PWD:
 				raw, err = c.Marshal(msg.GetTask().GetPwd())
-			case def.CAP_CD:
+			case defaults.CAP_CD:
 				raw, err = c.Marshal(msg.GetTask().GetCd())
-			case def.CAP_WHOAMI:
+			case defaults.CAP_WHOAMI:
 				raw, err = c.Marshal(msg.GetTask().GetWhoami())
-			case def.CAP_PS:
+			case defaults.CAP_PS:
 				raw, err = c.Marshal(msg.GetTask().GetPs())
-			case def.CAP_CAT:
+			case defaults.CAP_CAT:
 				raw, err = c.Marshal(msg.GetTask().GetCat())
-			case def.CAP_EXEC:
+			case defaults.CAP_EXEC:
 				raw, err = c.Marshal(msg.GetTask().GetExec())
-			case def.CAP_CP:
+			case defaults.CAP_CP:
 				raw, err = c.Marshal(msg.GetTask().GetCp())
-			case def.CAP_JOBS:
+			case defaults.CAP_JOBS:
 				raw, err = c.Marshal(msg.GetTask().GetJobs())
-			case def.CAP_JOBKILL:
+			case defaults.CAP_JOBKILL:
 				raw, err = c.Marshal(msg.GetTask().GetJobkill())
-			case def.CAP_KILL:
+			case defaults.CAP_KILL:
 				raw, err = c.Marshal(msg.GetTask().GetKill())
-			case def.CAP_MV:
+			case defaults.CAP_MV:
 				raw, err = c.Marshal(msg.GetTask().GetMv())
-			case def.CAP_MKDIR:
+			case defaults.CAP_MKDIR:
 				raw, err = c.Marshal(msg.GetTask().GetMkdir())
-			case def.CAP_RM:
+			case defaults.CAP_RM:
 				raw, err = c.Marshal(msg.GetTask().GetRm())
-			case def.CAP_EXEC_ASSEMBLY:
+			case defaults.CAP_EXEC_ASSEMBLY:
 				raw, err = c.Marshal(msg.GetTask().GetExecAssembly())
-			case def.CAP_SHELLCODE_INJECTION:
+			case defaults.CAP_SHELLCODE_INJECTION:
 				raw, err = c.Marshal(msg.GetTask().GetShellcodeInjection())
-			case def.CAP_DOWNLOAD:
+			case defaults.CAP_DOWNLOAD:
 				raw, err = c.Marshal(msg.GetTask().GetDownload())
-			case def.CAP_UPLOAD:
+			case defaults.CAP_UPLOAD:
 				raw, err = c.Marshal(msg.GetTask().GetUpload())
-			case def.CAP_PAUSE:
+			case defaults.CAP_PAUSE:
 				raw, err = c.Marshal(msg.GetTask().GetPause())
-			case def.CAP_DESTRUCT:
+			case defaults.CAP_DESTRUCT:
 				raw, err = c.Marshal(msg.GetTask().GetDestruct())
-			case def.CAP_EXEC_DETACH:
+			case defaults.CAP_EXEC_DETACH:
 				raw, err = c.Marshal(msg.GetTask().GetExecDetach())
-			case def.CAP_SHELL:
+			case defaults.CAP_SHELL:
 				raw, err = c.Marshal(msg.GetTask().GetShell())
-			case def.CAP_PPID:
+			case defaults.CAP_PPID:
 				raw, err = c.Marshal(msg.GetTask().GetPpid())
-			case def.CAP_EXIT:
+			case defaults.CAP_EXIT:
 				raw, err = c.Marshal(msg.GetTask().GetExit())
 			default:
 				err = fmt.Errorf("unknown capability %d", c)
@@ -1307,7 +1313,7 @@ func (s *server) NewGroup(ss operatorv1.OperatorService_NewGroupServer) error {
 				SetGroup(g).
 				SetBlobberArgs(blob).
 				SetCap(c).
-				SetStatus(def.StatusNew).
+				SetStatus(defaults.StatusNew).
 				Save(ctx)
 			if err != nil {
 				lg.Error(shared.ErrorSaveGroupTask, zap.Error(err))
@@ -1585,7 +1591,7 @@ func (s *server) CancelTasks(ctx context.Context, req *operatorv1.CancelTasksReq
 			q.Where(group.AuthorEQ(o.ID))
 		}).
 		Order(task.ByCreatedAt()).
-		Where(task.StatusEQ(def.StatusNew)).
+		Where(task.StatusEQ(defaults.StatusNew)).
 		Where(task.BidEQ(b.ID)).
 		All(ctx)
 	if err != nil {
@@ -1594,7 +1600,7 @@ func (s *server) CancelTasks(ctx context.Context, req *operatorv1.CancelTasksReq
 	}
 	for _, t := range ts {
 		t, err = t.Update().
-			SetStatus(def.StatusCancelled).
+			SetStatus(defaults.StatusCancelled).
 			SetDoneAt(time.Now()).
 			Save(ctx)
 		if err != nil {

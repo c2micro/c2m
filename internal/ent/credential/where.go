@@ -74,9 +74,9 @@ func Username(v string) predicate.Credential {
 	return predicate.Credential(sql.FieldEQ(FieldUsername, v))
 }
 
-// Password applies equality check predicate on the "password" field. It's identical to PasswordEQ.
-func Password(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldEQ(FieldPassword, v))
+// Secret applies equality check predicate on the "secret" field. It's identical to SecretEQ.
+func Secret(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldEQ(FieldSecret, v))
 }
 
 // Realm applies equality check predicate on the "realm" field. It's identical to RealmEQ.
@@ -304,79 +304,79 @@ func UsernameContainsFold(v string) predicate.Credential {
 	return predicate.Credential(sql.FieldContainsFold(FieldUsername, v))
 }
 
-// PasswordEQ applies the EQ predicate on the "password" field.
-func PasswordEQ(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldEQ(FieldPassword, v))
+// SecretEQ applies the EQ predicate on the "secret" field.
+func SecretEQ(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldEQ(FieldSecret, v))
 }
 
-// PasswordNEQ applies the NEQ predicate on the "password" field.
-func PasswordNEQ(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldNEQ(FieldPassword, v))
+// SecretNEQ applies the NEQ predicate on the "secret" field.
+func SecretNEQ(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldNEQ(FieldSecret, v))
 }
 
-// PasswordIn applies the In predicate on the "password" field.
-func PasswordIn(vs ...string) predicate.Credential {
-	return predicate.Credential(sql.FieldIn(FieldPassword, vs...))
+// SecretIn applies the In predicate on the "secret" field.
+func SecretIn(vs ...string) predicate.Credential {
+	return predicate.Credential(sql.FieldIn(FieldSecret, vs...))
 }
 
-// PasswordNotIn applies the NotIn predicate on the "password" field.
-func PasswordNotIn(vs ...string) predicate.Credential {
-	return predicate.Credential(sql.FieldNotIn(FieldPassword, vs...))
+// SecretNotIn applies the NotIn predicate on the "secret" field.
+func SecretNotIn(vs ...string) predicate.Credential {
+	return predicate.Credential(sql.FieldNotIn(FieldSecret, vs...))
 }
 
-// PasswordGT applies the GT predicate on the "password" field.
-func PasswordGT(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldGT(FieldPassword, v))
+// SecretGT applies the GT predicate on the "secret" field.
+func SecretGT(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldGT(FieldSecret, v))
 }
 
-// PasswordGTE applies the GTE predicate on the "password" field.
-func PasswordGTE(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldGTE(FieldPassword, v))
+// SecretGTE applies the GTE predicate on the "secret" field.
+func SecretGTE(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldGTE(FieldSecret, v))
 }
 
-// PasswordLT applies the LT predicate on the "password" field.
-func PasswordLT(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldLT(FieldPassword, v))
+// SecretLT applies the LT predicate on the "secret" field.
+func SecretLT(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldLT(FieldSecret, v))
 }
 
-// PasswordLTE applies the LTE predicate on the "password" field.
-func PasswordLTE(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldLTE(FieldPassword, v))
+// SecretLTE applies the LTE predicate on the "secret" field.
+func SecretLTE(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldLTE(FieldSecret, v))
 }
 
-// PasswordContains applies the Contains predicate on the "password" field.
-func PasswordContains(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldContains(FieldPassword, v))
+// SecretContains applies the Contains predicate on the "secret" field.
+func SecretContains(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldContains(FieldSecret, v))
 }
 
-// PasswordHasPrefix applies the HasPrefix predicate on the "password" field.
-func PasswordHasPrefix(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldHasPrefix(FieldPassword, v))
+// SecretHasPrefix applies the HasPrefix predicate on the "secret" field.
+func SecretHasPrefix(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldHasPrefix(FieldSecret, v))
 }
 
-// PasswordHasSuffix applies the HasSuffix predicate on the "password" field.
-func PasswordHasSuffix(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldHasSuffix(FieldPassword, v))
+// SecretHasSuffix applies the HasSuffix predicate on the "secret" field.
+func SecretHasSuffix(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldHasSuffix(FieldSecret, v))
 }
 
-// PasswordIsNil applies the IsNil predicate on the "password" field.
-func PasswordIsNil() predicate.Credential {
-	return predicate.Credential(sql.FieldIsNull(FieldPassword))
+// SecretIsNil applies the IsNil predicate on the "secret" field.
+func SecretIsNil() predicate.Credential {
+	return predicate.Credential(sql.FieldIsNull(FieldSecret))
 }
 
-// PasswordNotNil applies the NotNil predicate on the "password" field.
-func PasswordNotNil() predicate.Credential {
-	return predicate.Credential(sql.FieldNotNull(FieldPassword))
+// SecretNotNil applies the NotNil predicate on the "secret" field.
+func SecretNotNil() predicate.Credential {
+	return predicate.Credential(sql.FieldNotNull(FieldSecret))
 }
 
-// PasswordEqualFold applies the EqualFold predicate on the "password" field.
-func PasswordEqualFold(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldEqualFold(FieldPassword, v))
+// SecretEqualFold applies the EqualFold predicate on the "secret" field.
+func SecretEqualFold(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldEqualFold(FieldSecret, v))
 }
 
-// PasswordContainsFold applies the ContainsFold predicate on the "password" field.
-func PasswordContainsFold(v string) predicate.Credential {
-	return predicate.Credential(sql.FieldContainsFold(FieldPassword, v))
+// SecretContainsFold applies the ContainsFold predicate on the "secret" field.
+func SecretContainsFold(v string) predicate.Credential {
+	return predicate.Credential(sql.FieldContainsFold(FieldSecret, v))
 }
 
 // RealmEQ applies the EQ predicate on the "realm" field.
