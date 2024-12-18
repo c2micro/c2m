@@ -22,6 +22,13 @@ c2msrv:
 	CGO_ENABLED=0 CC=${CC} CXX=${CXX} go build ${LDFLAGS} -tags="${TAGS}" -o ${BIN_DIR}/c2msrv ${C2M_DIR}
 	@strip bin/c2msrv
 
+.PHONY: c2msrv-x64
+c2msrv-x64:
+	@mkdir -p ${BIN_DIR}
+	@echo "Building server..."
+	CGO_ENABLED=0 GOOS="linux" GOARCH="amd64" CC=${CC} CXX=${CXX} go build ${LDFLAGS} -tags="${TAGS}" -o ${BIN_DIR}/c2msrv.x64 ${C2M_DIR}
+	@strip bin/c2msrv.x64
+
 .PHONY: c2msrv-release
 c2msrv-release:
 	@mkdir -p ${BIN_DIR}
