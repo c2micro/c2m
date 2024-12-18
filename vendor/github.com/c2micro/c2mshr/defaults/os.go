@@ -53,8 +53,6 @@ func (b *BeaconOS) Scan(val any) error {
 
 func (b BeaconOS) String() string {
 	switch b {
-	case UnknownOS:
-		return "unknown"
 	case LinuxOS:
 		return "linux"
 	case WindowsOS:
@@ -63,5 +61,18 @@ func (b BeaconOS) String() string {
 		return "macos"
 	default:
 		return "unknown"
+	}
+}
+
+func (b BeaconOS) StringShort() string {
+	switch b {
+	case LinuxOS:
+		return "lin"
+	case WindowsOS:
+		return "win"
+	case MacOS:
+		return "mac"
+	default:
+		return "???"
 	}
 }

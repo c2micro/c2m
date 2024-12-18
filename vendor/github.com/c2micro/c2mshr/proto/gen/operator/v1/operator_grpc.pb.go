@@ -44,62 +44,65 @@ const (
 	OperatorService_NewGroup_FullMethodName             = "/operator.v1.OperatorService/NewGroup"
 	OperatorService_SubscribeTasks_FullMethodName       = "/operator.v1.OperatorService/SubscribeTasks"
 	OperatorService_CancelTasks_FullMethodName          = "/operator.v1.OperatorService/CancelTasks"
+	OperatorService_GetTaskOutput_FullMethodName        = "/operator.v1.OperatorService/GetTaskOutput"
 )
 
 // OperatorServiceClient is the client API for OperatorService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OperatorServiceClient interface {
-	// Hello первоначальный хендшейк и отслеживание "здоровья" оператора
+	// первоначальный хендшейк и отслеживание "здоровья" оператора
 	Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[HelloResponse], error)
-	// SubscribeListeners подписка на получение обновлений списка с листенерами
+	// подписка на получение обновлений списка с листенерами
 	SubscribeListeners(ctx context.Context, in *SubscribeListenersRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscribeListenersResponse], error)
-	// SubscribeBeacons подписка на получение обновлений списка с биконами
+	// подписка на получение обновлений списка с биконами
 	SubscribeBeacons(ctx context.Context, in *SubscribeBeaconsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscribeBeaconsResponse], error)
-	// SubscribeOperators подписка на получение обновлений списка с операторами
+	// подписка на получение обновлений списка с операторами
 	SubscribeOperators(ctx context.Context, in *SubscribeOperatorsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscribeOperatorsResponse], error)
-	// SubscribeChat подписка на получение обновлений списка сообщений в чате
+	// подписка на получение обновлений списка сообщений в чате
 	SubscribeChat(ctx context.Context, in *SubscribeChatRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscribeChatResponse], error)
-	// SubscribeCredentials подписка на получение обновлений списка кределов
+	// подписка на получение обновлений списка кределов
 	SubscribeCredentials(ctx context.Context, in *SubscribeCredentialsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscribeCredentialsResponse], error)
-	// SetListenerColor обновление цвета листенера
+	// обновление цвета листенера
 	SetListenerColor(ctx context.Context, in *SetListenerColorRequest, opts ...grpc.CallOption) (*SetListenerColorResponse, error)
-	// SetListenersColor обновление цвета на нескольких листенерах
+	// обновление цвета на нескольких листенерах
 	SetListenersColor(ctx context.Context, in *SetListenersColorRequest, opts ...grpc.CallOption) (*SetListenersColorResponse, error)
-	// SetListenerNote обновление заметки листенера
+	// обновление заметки листенера
 	SetListenerNote(ctx context.Context, in *SetListenerNoteRequest, opts ...grpc.CallOption) (*SetListenerNoteResponse, error)
-	// SetListenersNote обновление заметки на нескольких листенерах
+	// обновление заметки на нескольких листенерах
 	SetListenersNote(ctx context.Context, in *SetListenersNoteRequest, opts ...grpc.CallOption) (*SetListenersNoteResponse, error)
-	// SetBeaconColor обновление цвета бикона
+	// обновление цвета бикона
 	SetBeaconColor(ctx context.Context, in *SetBeaconColorRequest, opts ...grpc.CallOption) (*SetBeaconColorResponse, error)
-	// SetBeaconsColor обновление цвета на нескольких биконах
+	// обновление цвета на нескольких биконах
 	SetBeaconsColor(ctx context.Context, in *SetBeaconsColorRequest, opts ...grpc.CallOption) (*SetBeaconsColorResponse, error)
-	// SetBeaconNote обновление заметки бикона
+	// обновление заметки бикона
 	SetBeaconNote(ctx context.Context, in *SetBeaconNoteRequest, opts ...grpc.CallOption) (*SetBeaconNoteResponse, error)
-	// SetBeaconsNote обновление заметки на нескольких биконах
+	// обновление заметки на нескольких биконах
 	SetBeaconsNote(ctx context.Context, in *SetBeaconsNoteRequest, opts ...grpc.CallOption) (*SetBeaconsNoteResponse, error)
-	// SetOperatorColor обновление цвета для оператора
+	// обновление цвета для оператора
 	SetOperatorColor(ctx context.Context, in *SetOperatorColorRequest, opts ...grpc.CallOption) (*SetOperatorColorResponse, error)
-	// SetOperatorsColor обновление цвета для нескольких операторов
+	// обновление цвета для нескольких операторов
 	SetOperatorsColor(ctx context.Context, in *SetOperatorsColorRequest, opts ...grpc.CallOption) (*SetOperatorsColorResponse, error)
-	// NewChatMessage создание нового сообщения в чате
+	// создание нового сообщения в чате
 	NewChatMessage(ctx context.Context, in *NewChatMessageRequest, opts ...grpc.CallOption) (*NewChatMessageResponse, error)
-	// NewCredential создание новой связки кредов
+	// создание новой связки кредов
 	NewCredential(ctx context.Context, in *NewCredentialRequest, opts ...grpc.CallOption) (*NewCredentialResponse, error)
-	// SetCredentialColor обновление цвета для кределов
+	// обновление цвета для кределов
 	SetCredentialColor(ctx context.Context, in *SetCredentialColorRequest, opts ...grpc.CallOption) (*SetCredentialColorResponse, error)
-	// SetCredentialsColor обновление цвета для списка кределов
+	// обновление цвета для списка кределов
 	SetCredentialsColor(ctx context.Context, in *SetCredentialsColorRequest, opts ...grpc.CallOption) (*SetCredentialsColorResponse, error)
-	// SetCredentialNote обновление заметки для кределов
+	// обновление заметки для кределов
 	SetCredentialNote(ctx context.Context, in *SetCredentialNoteRequest, opts ...grpc.CallOption) (*SetCredentialNoteResponse, error)
-	// SetCredentialsNote обновление заметки для списка кределов
+	// обновление заметки для списка кределов
 	SetCredentialsNote(ctx context.Context, in *SetCredentialsNoteRequest, opts ...grpc.CallOption) (*SetCredentialsNoteResponse, error)
-	// NewGroup создание группы/задач/сообщений для бикона
+	// создание группы/задач/сообщений для бикона
 	NewGroup(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[NewGroupRequest, NewGroupResponse], error)
-	// SubscribeTasks подписка на получение обновление по таскам для биконов
+	// подписка на получение обновление по таскам для биконов
 	SubscribeTasks(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[SubscribeTasksRequest, SubscribeTasksResponse], error)
-	// CancelTasks отмена всех тасков (в статусе NEW), созданных оператором
+	// отмена всех тасков (в статусе NEW), созданных оператором
 	CancelTasks(ctx context.Context, in *CancelTasksRequest, opts ...grpc.CallOption) (*CancelTasksResponse, error)
+	// получение полного output для таска по его ID. Используется для скачивания больших output'ов
+	GetTaskOutput(ctx context.Context, in *GetTaskOutputRequest, opts ...grpc.CallOption) (*GetTaskOutputResponse, error)
 }
 
 type operatorServiceClient struct {
@@ -420,60 +423,72 @@ func (c *operatorServiceClient) CancelTasks(ctx context.Context, in *CancelTasks
 	return out, nil
 }
 
+func (c *operatorServiceClient) GetTaskOutput(ctx context.Context, in *GetTaskOutputRequest, opts ...grpc.CallOption) (*GetTaskOutputResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTaskOutputResponse)
+	err := c.cc.Invoke(ctx, OperatorService_GetTaskOutput_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OperatorServiceServer is the server API for OperatorService service.
 // All implementations must embed UnimplementedOperatorServiceServer
 // for forward compatibility.
 type OperatorServiceServer interface {
-	// Hello первоначальный хендшейк и отслеживание "здоровья" оператора
+	// первоначальный хендшейк и отслеживание "здоровья" оператора
 	Hello(*HelloRequest, grpc.ServerStreamingServer[HelloResponse]) error
-	// SubscribeListeners подписка на получение обновлений списка с листенерами
+	// подписка на получение обновлений списка с листенерами
 	SubscribeListeners(*SubscribeListenersRequest, grpc.ServerStreamingServer[SubscribeListenersResponse]) error
-	// SubscribeBeacons подписка на получение обновлений списка с биконами
+	// подписка на получение обновлений списка с биконами
 	SubscribeBeacons(*SubscribeBeaconsRequest, grpc.ServerStreamingServer[SubscribeBeaconsResponse]) error
-	// SubscribeOperators подписка на получение обновлений списка с операторами
+	// подписка на получение обновлений списка с операторами
 	SubscribeOperators(*SubscribeOperatorsRequest, grpc.ServerStreamingServer[SubscribeOperatorsResponse]) error
-	// SubscribeChat подписка на получение обновлений списка сообщений в чате
+	// подписка на получение обновлений списка сообщений в чате
 	SubscribeChat(*SubscribeChatRequest, grpc.ServerStreamingServer[SubscribeChatResponse]) error
-	// SubscribeCredentials подписка на получение обновлений списка кределов
+	// подписка на получение обновлений списка кределов
 	SubscribeCredentials(*SubscribeCredentialsRequest, grpc.ServerStreamingServer[SubscribeCredentialsResponse]) error
-	// SetListenerColor обновление цвета листенера
+	// обновление цвета листенера
 	SetListenerColor(context.Context, *SetListenerColorRequest) (*SetListenerColorResponse, error)
-	// SetListenersColor обновление цвета на нескольких листенерах
+	// обновление цвета на нескольких листенерах
 	SetListenersColor(context.Context, *SetListenersColorRequest) (*SetListenersColorResponse, error)
-	// SetListenerNote обновление заметки листенера
+	// обновление заметки листенера
 	SetListenerNote(context.Context, *SetListenerNoteRequest) (*SetListenerNoteResponse, error)
-	// SetListenersNote обновление заметки на нескольких листенерах
+	// обновление заметки на нескольких листенерах
 	SetListenersNote(context.Context, *SetListenersNoteRequest) (*SetListenersNoteResponse, error)
-	// SetBeaconColor обновление цвета бикона
+	// обновление цвета бикона
 	SetBeaconColor(context.Context, *SetBeaconColorRequest) (*SetBeaconColorResponse, error)
-	// SetBeaconsColor обновление цвета на нескольких биконах
+	// обновление цвета на нескольких биконах
 	SetBeaconsColor(context.Context, *SetBeaconsColorRequest) (*SetBeaconsColorResponse, error)
-	// SetBeaconNote обновление заметки бикона
+	// обновление заметки бикона
 	SetBeaconNote(context.Context, *SetBeaconNoteRequest) (*SetBeaconNoteResponse, error)
-	// SetBeaconsNote обновление заметки на нескольких биконах
+	// обновление заметки на нескольких биконах
 	SetBeaconsNote(context.Context, *SetBeaconsNoteRequest) (*SetBeaconsNoteResponse, error)
-	// SetOperatorColor обновление цвета для оператора
+	// обновление цвета для оператора
 	SetOperatorColor(context.Context, *SetOperatorColorRequest) (*SetOperatorColorResponse, error)
-	// SetOperatorsColor обновление цвета для нескольких операторов
+	// обновление цвета для нескольких операторов
 	SetOperatorsColor(context.Context, *SetOperatorsColorRequest) (*SetOperatorsColorResponse, error)
-	// NewChatMessage создание нового сообщения в чате
+	// создание нового сообщения в чате
 	NewChatMessage(context.Context, *NewChatMessageRequest) (*NewChatMessageResponse, error)
-	// NewCredential создание новой связки кредов
+	// создание новой связки кредов
 	NewCredential(context.Context, *NewCredentialRequest) (*NewCredentialResponse, error)
-	// SetCredentialColor обновление цвета для кределов
+	// обновление цвета для кределов
 	SetCredentialColor(context.Context, *SetCredentialColorRequest) (*SetCredentialColorResponse, error)
-	// SetCredentialsColor обновление цвета для списка кределов
+	// обновление цвета для списка кределов
 	SetCredentialsColor(context.Context, *SetCredentialsColorRequest) (*SetCredentialsColorResponse, error)
-	// SetCredentialNote обновление заметки для кределов
+	// обновление заметки для кределов
 	SetCredentialNote(context.Context, *SetCredentialNoteRequest) (*SetCredentialNoteResponse, error)
-	// SetCredentialsNote обновление заметки для списка кределов
+	// обновление заметки для списка кределов
 	SetCredentialsNote(context.Context, *SetCredentialsNoteRequest) (*SetCredentialsNoteResponse, error)
-	// NewGroup создание группы/задач/сообщений для бикона
+	// создание группы/задач/сообщений для бикона
 	NewGroup(grpc.ClientStreamingServer[NewGroupRequest, NewGroupResponse]) error
-	// SubscribeTasks подписка на получение обновление по таскам для биконов
+	// подписка на получение обновление по таскам для биконов
 	SubscribeTasks(grpc.BidiStreamingServer[SubscribeTasksRequest, SubscribeTasksResponse]) error
-	// CancelTasks отмена всех тасков (в статусе NEW), созданных оператором
+	// отмена всех тасков (в статусе NEW), созданных оператором
 	CancelTasks(context.Context, *CancelTasksRequest) (*CancelTasksResponse, error)
+	// получение полного output для таска по его ID. Используется для скачивания больших output'ов
+	GetTaskOutput(context.Context, *GetTaskOutputRequest) (*GetTaskOutputResponse, error)
 	mustEmbedUnimplementedOperatorServiceServer()
 }
 
@@ -558,6 +573,9 @@ func (UnimplementedOperatorServiceServer) SubscribeTasks(grpc.BidiStreamingServe
 }
 func (UnimplementedOperatorServiceServer) CancelTasks(context.Context, *CancelTasksRequest) (*CancelTasksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelTasks not implemented")
+}
+func (UnimplementedOperatorServiceServer) GetTaskOutput(context.Context, *GetTaskOutputRequest) (*GetTaskOutputResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTaskOutput not implemented")
 }
 func (UnimplementedOperatorServiceServer) mustEmbedUnimplementedOperatorServiceServer() {}
 func (UnimplementedOperatorServiceServer) testEmbeddedByValue()                         {}
@@ -966,6 +984,24 @@ func _OperatorService_CancelTasks_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OperatorService_GetTaskOutput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTaskOutputRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OperatorServiceServer).GetTaskOutput(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OperatorService_GetTaskOutput_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OperatorServiceServer).GetTaskOutput(ctx, req.(*GetTaskOutputRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OperatorService_ServiceDesc is the grpc.ServiceDesc for OperatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1040,6 +1076,10 @@ var OperatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CancelTasks",
 			Handler:    _OperatorService_CancelTasks_Handler,
+		},
+		{
+			MethodName: "GetTaskOutput",
+			Handler:    _OperatorService_GetTaskOutput_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

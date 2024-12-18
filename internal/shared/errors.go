@@ -42,6 +42,7 @@ const (
 	ErrorQueryTaskGroupsFromDB        = "query task groups from DB"
 	ErrorQueryTaskGroupMessagesFromDB = "query task messages from DB"
 	ErrorQueryTasksFromDB             = "query tasks from DB"
+	ErrorQueryTaskFromDB              = "query task from DB"
 	ErrorQueryPkiCaFromDB             = "query ca pki from DB"
 	ErrorQueryPkiOperatorFromDB       = "query operator pki from DB"
 	ErrorQueryPkiListenerFromDB       = "query listener pki from DB"

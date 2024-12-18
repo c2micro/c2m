@@ -1617,3 +1617,48 @@ func (s *server) CancelTasks(ctx context.Context, req *operatorv1.CancelTasksReq
 	}
 	return &operatorv1.CancelTasksResponse{}, nil
 }
+
+// скачивание output'a таска
+func (s *server) GetTaskOutput(ctx context.Context, req *operatorv1.GetTaskOutputRequest) (*operatorv1.GetTaskOutputResponse, error) {
+	username := grpcauth.OperatorFromCtx(ctx)
+	lg := s.lg.Named("GetTaskOutput").With(zap.String("username", username))
+	cookie := req.GetCookie().GetValue()
+
+	// проверяем, что кука и username совпадают
+	if !pools.Pool.Hello.Validate(username, cookie) {
+		lg.Warn(shared.ErrorInvalidSessionCookie)
+		return nil, status.Error(codes.PermissionDenied, shared.ErrorInvalidSessionCookie)
+	}
+
+	// получаем таску по id
+	t, err := s.db.Task.
+		Query().
+		WithBlobberOutput().
+		Where(task.IDEQ(int(req.GetTid()))).
+		Only(ctx)
+	if err != nil {
+		if ent.IsNotFound(err) {
+			return nil, status.Error(codes.NotFound, err.Error())
+		}
+		lg.Error(shared.ErrorQueryTaskFromDB, zap.Error(err))
+		return nil, status.Error(codes.Internal, shared.ErrorDB)
+	}
+
+	data := make([]byte, 0)
+
+	// получаем блоб
+	blob, err := t.Edges.BlobberOutputOrErr()
+	if err != nil {
+		if !ent.IsNotFound(err) {
+			// если блоб не найден - значит он не существует еще для таска
+			lg.Error(shared.ErrorQueryBlobFromDB, zap.Error(err))
+			return nil, status.Error(codes.Internal, shared.ErrorDB)
+		}
+	} else {
+		data = blob.Blob
+	}
+
+	return &operatorv1.GetTaskOutputResponse{
+		Output: wrapperspb.Bytes(data),
+	}, nil
+}
