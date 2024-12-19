@@ -36,7 +36,7 @@ github.com/apparentlymart/go-textseg/v15/textseg
 # github.com/bmatcuk/doublestar v1.3.4
 ## explicit; go 1.12
 github.com/bmatcuk/doublestar
-# github.com/c2micro/c2mshr v0.0.0-20241218163131-bc2ecc1fec9d
+# github.com/c2micro/c2mshr v0.0.0-20241219163425-87894c8880e2
 ## explicit; go 1.22.4
 github.com/c2micro/c2mshr/defaults
 github.com/c2micro/c2mshr/proto/gen/common/v1
