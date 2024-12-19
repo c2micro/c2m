@@ -3,7 +3,7 @@ package db
 import (
 	"context"
 
-	"github.com/c2micro/c2msrv/internal/ent"
+	"github.com/c2micro/c2m/internal/ent"
 
 	"github.com/go-faster/errors"
 )

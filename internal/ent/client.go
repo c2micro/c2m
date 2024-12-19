@@ -9,22 +9,22 @@ import (
 	"log"
 	"reflect"
 
-	"github.com/c2micro/c2msrv/internal/ent/migrate"
+	"github.com/c2micro/c2m/internal/ent/migrate"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect"
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
-	"github.com/c2micro/c2msrv/internal/ent/beacon"
-	"github.com/c2micro/c2msrv/internal/ent/blobber"
-	"github.com/c2micro/c2msrv/internal/ent/chat"
-	"github.com/c2micro/c2msrv/internal/ent/credential"
-	"github.com/c2micro/c2msrv/internal/ent/group"
-	"github.com/c2micro/c2msrv/internal/ent/listener"
-	"github.com/c2micro/c2msrv/internal/ent/message"
-	"github.com/c2micro/c2msrv/internal/ent/operator"
-	"github.com/c2micro/c2msrv/internal/ent/pki"
-	"github.com/c2micro/c2msrv/internal/ent/task"
+	"github.com/c2micro/c2m/internal/ent/beacon"
+	"github.com/c2micro/c2m/internal/ent/blobber"
+	"github.com/c2micro/c2m/internal/ent/chat"
+	"github.com/c2micro/c2m/internal/ent/credential"
+	"github.com/c2micro/c2m/internal/ent/group"
+	"github.com/c2micro/c2m/internal/ent/listener"
+	"github.com/c2micro/c2m/internal/ent/message"
+	"github.com/c2micro/c2m/internal/ent/operator"
+	"github.com/c2micro/c2m/internal/ent/pki"
+	"github.com/c2micro/c2m/internal/ent/task"
 )
 
 // Client is the client that holds all ent builders.

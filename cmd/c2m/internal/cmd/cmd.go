@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/c2micro/c2msrv/internal/cfg"
-	"github.com/c2micro/c2msrv/internal/constants"
-	"github.com/c2micro/c2msrv/internal/utils"
+	"github.com/c2micro/c2m/internal/cfg"
+	"github.com/c2micro/c2m/internal/constants"
+	"github.com/c2micro/c2m/internal/utils"
 
 	"github.com/creasty/defaults"
 	"github.com/go-faster/errors"

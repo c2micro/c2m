@@ -12,11 +12,11 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/ent/beacon"
-	"github.com/c2micro/c2msrv/internal/ent/blobber"
-	"github.com/c2micro/c2msrv/internal/ent/group"
-	"github.com/c2micro/c2msrv/internal/ent/predicate"
-	"github.com/c2micro/c2msrv/internal/ent/task"
+	"github.com/c2micro/c2m/internal/ent/beacon"
+	"github.com/c2micro/c2m/internal/ent/blobber"
+	"github.com/c2micro/c2m/internal/ent/group"
+	"github.com/c2micro/c2m/internal/ent/predicate"
+	"github.com/c2micro/c2m/internal/ent/task"
 )
 
 // TaskQuery is the builder for querying Task entities.

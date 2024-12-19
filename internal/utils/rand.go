@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"strings"
 
-	"github.com/c2micro/c2msrv/internal/constants"
+	"github.com/c2micro/c2m/internal/constants"
 )
 
 // RandUint32 генерация рандомного числа

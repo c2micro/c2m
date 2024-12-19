@@ -9,7 +9,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"github.com/c2micro/c2msrv/internal/ent/blobber"
+	"github.com/c2micro/c2m/internal/ent/blobber"
 )
 
 // Blobber is the model entity for the Blobber schema.

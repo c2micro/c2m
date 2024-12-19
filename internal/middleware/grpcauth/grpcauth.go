@@ -7,11 +7,11 @@ import (
 
 	"github.com/c2micro/c2mshr/defaults"
 	operatorv1 "github.com/c2micro/c2mshr/proto/gen/operator/v1"
-	"github.com/c2micro/c2msrv/internal/ent"
-	"github.com/c2micro/c2msrv/internal/ent/listener"
-	"github.com/c2micro/c2msrv/internal/ent/operator"
-	"github.com/c2micro/c2msrv/internal/middleware"
-	"github.com/c2micro/c2msrv/internal/pools"
+	"github.com/c2micro/c2m/internal/ent"
+	"github.com/c2micro/c2m/internal/ent/listener"
+	"github.com/c2micro/c2m/internal/ent/operator"
+	"github.com/c2micro/c2m/internal/middleware"
+	"github.com/c2micro/c2m/internal/pools"
 	"github.com/go-faster/errors"
 	"google.golang.org/protobuf/types/known/timestamppb"
 

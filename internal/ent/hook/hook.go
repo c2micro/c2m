@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/c2micro/c2msrv/internal/ent"
+	"github.com/c2micro/c2m/internal/ent"
 )
 
 // The BeaconFunc type is an adapter to allow the use of ordinary

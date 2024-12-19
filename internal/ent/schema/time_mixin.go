@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	gen "github.com/c2micro/c2msrv/internal/ent"
-	"github.com/c2micro/c2msrv/internal/ent/hook"
-	"github.com/c2micro/c2msrv/internal/ent/intercept"
+	gen "github.com/c2micro/c2m/internal/ent"
+	"github.com/c2micro/c2m/internal/ent/hook"
+	"github.com/c2micro/c2m/internal/ent/intercept"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"

@@ -8,7 +8,7 @@ import (
 
 	"entgo.io/ent/dialect"
 	entsql "entgo.io/ent/dialect/sql"
-	"github.com/c2micro/c2msrv/internal/ent"
+	"github.com/c2micro/c2m/internal/ent"
 	"github.com/go-faster/errors"
 	"modernc.org/sqlite"
 

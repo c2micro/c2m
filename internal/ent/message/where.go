@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/ent/predicate"
+	"github.com/c2micro/c2m/internal/ent/predicate"
 )
 
 // ID filters vertices based on their ID field.

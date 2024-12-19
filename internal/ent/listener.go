@@ -9,8 +9,8 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"github.com/c2micro/c2msrv/internal/ent/listener"
-	"github.com/c2micro/c2msrv/internal/types"
+	"github.com/c2micro/c2m/internal/ent/listener"
+	"github.com/c2micro/c2m/internal/types"
 )
 
 // Listener is the model entity for the Listener schema.

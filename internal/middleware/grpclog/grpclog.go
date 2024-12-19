@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/c2micro/c2msrv/internal/middleware"
+	"github.com/c2micro/c2m/internal/middleware"
 
 	"github.com/go-faster/sdk/zctx"
 	"go.uber.org/zap"

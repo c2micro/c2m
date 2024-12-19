@@ -9,8 +9,8 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"github.com/c2micro/c2msrv/internal/ent/chat"
-	"github.com/c2micro/c2msrv/internal/ent/operator"
+	"github.com/c2micro/c2m/internal/ent/chat"
+	"github.com/c2micro/c2m/internal/ent/operator"
 )
 
 // Chat is the model entity for the Chat schema.

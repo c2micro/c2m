@@ -2,4 +2,4 @@
 
 package ent
 
-// The schema-stitching logic is generated in github.com/c2micro/c2msrv/internal/ent/runtime/runtime.go
+// The schema-stitching logic is generated in github.com/c2micro/c2m/internal/ent/runtime/runtime.go

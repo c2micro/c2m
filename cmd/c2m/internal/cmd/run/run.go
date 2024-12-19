@@ -1,10 +1,10 @@
 package run
 
 import (
-	"github.com/c2micro/c2msrv/internal/ent"
-	"github.com/c2micro/c2msrv/internal/listener"
-	"github.com/c2micro/c2msrv/internal/management"
-	"github.com/c2micro/c2msrv/internal/operator"
+	"github.com/c2micro/c2m/internal/ent"
+	"github.com/c2micro/c2m/internal/listener"
+	"github.com/c2micro/c2m/internal/management"
+	"github.com/c2micro/c2m/internal/operator"
 
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"

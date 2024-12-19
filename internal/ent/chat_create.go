@@ -10,8 +10,8 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/ent/chat"
-	"github.com/c2micro/c2msrv/internal/ent/operator"
+	"github.com/c2micro/c2m/internal/ent/chat"
+	"github.com/c2micro/c2m/internal/ent/operator"
 )
 
 // ChatCreate is the builder for creating a Chat entity.

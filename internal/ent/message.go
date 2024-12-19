@@ -10,8 +10,8 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/ent/group"
-	"github.com/c2micro/c2msrv/internal/ent/message"
+	"github.com/c2micro/c2m/internal/ent/group"
+	"github.com/c2micro/c2m/internal/ent/message"
 )
 
 // Message is the model entity for the Message schema.

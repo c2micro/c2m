@@ -5,8 +5,8 @@ import (
 	"crypto/tls"
 	"net"
 
-	"github.com/c2micro/c2msrv/internal/ent"
-	"github.com/c2micro/c2msrv/internal/ent/pki"
+	"github.com/c2micro/c2m/internal/ent"
+	"github.com/c2micro/c2m/internal/ent/pki"
 
 	"github.com/go-faster/errors"
 )

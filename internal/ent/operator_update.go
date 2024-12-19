@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/ent/chat"
-	"github.com/c2micro/c2msrv/internal/ent/group"
-	"github.com/c2micro/c2msrv/internal/ent/operator"
-	"github.com/c2micro/c2msrv/internal/ent/predicate"
+	"github.com/c2micro/c2m/internal/ent/chat"
+	"github.com/c2micro/c2m/internal/ent/group"
+	"github.com/c2micro/c2m/internal/ent/operator"
+	"github.com/c2micro/c2m/internal/ent/predicate"
 )
 
 // OperatorUpdate is the builder for updating Operator entities.

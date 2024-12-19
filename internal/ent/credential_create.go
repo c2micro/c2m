@@ -10,7 +10,7 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/ent/credential"
+	"github.com/c2micro/c2m/internal/ent/credential"
 )
 
 // CredentialCreate is the builder for creating a Credential entity.

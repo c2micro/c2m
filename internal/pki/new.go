@@ -13,10 +13,10 @@ import (
 	"net"
 	"time"
 
-	"github.com/c2micro/c2msrv/internal/constants"
-	"github.com/c2micro/c2msrv/internal/ent"
-	"github.com/c2micro/c2msrv/internal/ent/pki"
-	"github.com/c2micro/c2msrv/internal/utils"
+	"github.com/c2micro/c2m/internal/constants"
+	"github.com/c2micro/c2m/internal/ent"
+	"github.com/c2micro/c2m/internal/ent/pki"
+	"github.com/c2micro/c2m/internal/utils"
 
 	"github.com/go-faster/errors"
 )

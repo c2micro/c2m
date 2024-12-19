@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/constants"
-	"github.com/c2micro/c2msrv/internal/types"
+	"github.com/c2micro/c2m/internal/constants"
+	"github.com/c2micro/c2m/internal/types"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect"

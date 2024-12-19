@@ -5,7 +5,7 @@ import (
 
 	"github.com/c2micro/c2mshr/defaults"
 	operatorv1 "github.com/c2micro/c2mshr/proto/gen/operator/v1"
-	"github.com/c2micro/c2msrv/internal/ent"
+	"github.com/c2micro/c2m/internal/ent"
 
 	"google.golang.org/protobuf/types/known/timestamppb"
 	"google.golang.org/protobuf/types/known/wrapperspb"

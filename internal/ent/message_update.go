@@ -12,9 +12,9 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	"github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/ent/group"
-	"github.com/c2micro/c2msrv/internal/ent/message"
-	"github.com/c2micro/c2msrv/internal/ent/predicate"
+	"github.com/c2micro/c2m/internal/ent/group"
+	"github.com/c2micro/c2m/internal/ent/message"
+	"github.com/c2micro/c2m/internal/ent/predicate"
 )
 
 // MessageUpdate is the builder for updating Message entities.

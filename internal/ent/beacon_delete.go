@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/ent/beacon"
-	"github.com/c2micro/c2msrv/internal/ent/predicate"
+	"github.com/c2micro/c2m/internal/ent/beacon"
+	"github.com/c2micro/c2m/internal/ent/predicate"
 )
 
 // BeaconDelete is the builder for deleting a Beacon entity.

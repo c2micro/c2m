@@ -12,8 +12,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/ent/pki"
-	"github.com/c2micro/c2msrv/internal/ent/predicate"
+	"github.com/c2micro/c2m/internal/ent/pki"
+	"github.com/c2micro/c2m/internal/ent/predicate"
 )
 
 // PkiQuery is the builder for querying Pki entities.

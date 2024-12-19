@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
-	"github.com/c2micro/c2msrv/internal/constants"
+	"github.com/c2micro/c2m/internal/constants"
 )
 
 // Operator объявление схемы Operator

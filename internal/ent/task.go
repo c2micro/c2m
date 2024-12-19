@@ -10,10 +10,10 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/ent/beacon"
-	"github.com/c2micro/c2msrv/internal/ent/blobber"
-	"github.com/c2micro/c2msrv/internal/ent/group"
-	"github.com/c2micro/c2msrv/internal/ent/task"
+	"github.com/c2micro/c2m/internal/ent/beacon"
+	"github.com/c2micro/c2m/internal/ent/blobber"
+	"github.com/c2micro/c2m/internal/ent/group"
+	"github.com/c2micro/c2m/internal/ent/task"
 )
 
 // Task is the model entity for the Task schema.

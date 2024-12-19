@@ -9,7 +9,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"github.com/c2micro/c2msrv/internal/ent/pki"
+	"github.com/c2micro/c2m/internal/ent/pki"
 )
 
 // Pki is the model entity for the Pki schema.

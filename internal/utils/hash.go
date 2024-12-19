@@ -3,7 +3,7 @@ package utils
 import (
 	"encoding/binary"
 
-	"github.com/c2micro/c2msrv/internal/constants"
+	"github.com/c2micro/c2m/internal/constants"
 	"github.com/orisano/wyhash"
 )
 

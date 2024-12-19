@@ -6,7 +6,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 	"github.com/c2micro/c2mshr/defaults"
-	"github.com/c2micro/c2msrv/internal/constants"
+	"github.com/c2micro/c2m/internal/constants"
 )
 
 // Credential объявление схемы Credential

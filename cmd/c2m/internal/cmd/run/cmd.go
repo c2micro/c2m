@@ -1,7 +1,7 @@
 package run
 
 import (
-	"github.com/c2micro/c2msrv/internal/cfg"
+	"github.com/c2micro/c2m/internal/cfg"
 
 	"github.com/go-faster/sdk/zctx"
 	"github.com/spf13/cobra"

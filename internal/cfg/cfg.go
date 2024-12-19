@@ -5,12 +5,12 @@ import (
 	"errors"
 	"os"
 
-	"github.com/c2micro/c2msrv/internal/db"
-	"github.com/c2micro/c2msrv/internal/listener"
-	"github.com/c2micro/c2msrv/internal/management"
-	"github.com/c2micro/c2msrv/internal/operator"
-	"github.com/c2micro/c2msrv/internal/pki"
-	"github.com/c2micro/c2msrv/internal/webhook"
+	"github.com/c2micro/c2m/internal/db"
+	"github.com/c2micro/c2m/internal/listener"
+	"github.com/c2micro/c2m/internal/management"
+	"github.com/c2micro/c2m/internal/operator"
+	"github.com/c2micro/c2m/internal/pki"
+	"github.com/c2micro/c2m/internal/webhook"
 
 	"github.com/go-faster/sdk/zctx"
 	"github.com/go-playground/validator/v10"

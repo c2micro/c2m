@@ -1,4 +1,4 @@
-# c2msrv
+# c2m
 
 `c2m` is a flexible and advanced C2 framework.
 

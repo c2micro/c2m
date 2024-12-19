@@ -1,4 +1,4 @@
-module github.com/c2micro/c2msrv
+module github.com/c2micro/c2m
 
 go 1.23.0
 

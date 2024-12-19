@@ -5,17 +5,17 @@ package runtime
 import (
 	"time"
 
-	"github.com/c2micro/c2msrv/internal/ent/beacon"
-	"github.com/c2micro/c2msrv/internal/ent/blobber"
-	"github.com/c2micro/c2msrv/internal/ent/chat"
-	"github.com/c2micro/c2msrv/internal/ent/credential"
-	"github.com/c2micro/c2msrv/internal/ent/group"
-	"github.com/c2micro/c2msrv/internal/ent/listener"
-	"github.com/c2micro/c2msrv/internal/ent/message"
-	"github.com/c2micro/c2msrv/internal/ent/operator"
-	"github.com/c2micro/c2msrv/internal/ent/pki"
-	"github.com/c2micro/c2msrv/internal/ent/schema"
-	"github.com/c2micro/c2msrv/internal/ent/task"
+	"github.com/c2micro/c2m/internal/ent/beacon"
+	"github.com/c2micro/c2m/internal/ent/blobber"
+	"github.com/c2micro/c2m/internal/ent/chat"
+	"github.com/c2micro/c2m/internal/ent/credential"
+	"github.com/c2micro/c2m/internal/ent/group"
+	"github.com/c2micro/c2m/internal/ent/listener"
+	"github.com/c2micro/c2m/internal/ent/message"
+	"github.com/c2micro/c2m/internal/ent/operator"
+	"github.com/c2micro/c2m/internal/ent/pki"
+	"github.com/c2micro/c2m/internal/ent/schema"
+	"github.com/c2micro/c2m/internal/ent/task"
 )
 
 // The init function reads all schema descriptors with runtime code
