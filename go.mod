@@ -6,7 +6,7 @@ toolchain go1.23.4
 
 require (
 	entgo.io/ent v0.14.1
-	github.com/c2micro/c2mshr v0.0.0-20241219163425-87894c8880e2
+	github.com/c2micro/c2mshr v0.0.0-20241219175938-7764c293ddfb
 	github.com/creasty/defaults v1.8.0
 	github.com/docker/go-units v0.5.0
 	github.com/fatih/color v1.18.0
@@ -21,9 +21,9 @@ require (
 	github.com/spf13/pflag v1.0.5
 	go.uber.org/zap v1.27.0
 	golang.org/x/sync v0.10.0
-	google.golang.org/grpc v1.69.0
-	google.golang.org/protobuf v1.35.2
-	modernc.org/sqlite v1.34.2
+	google.golang.org/grpc v1.69.2
+	google.golang.org/protobuf v1.36.0
+	modernc.org/sqlite v1.34.3
 	sigs.k8s.io/yaml v1.4.0
 )
 
@@ -34,17 +34,17 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.9.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
-	golang.org/x/exp v0.0.0-20231108232855-2478ac86f678 // indirect
-	golang.org/x/tools v0.24.0 // indirect
+	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67 // indirect
+	golang.org/x/tools v0.28.0 // indirect
 )
 
 require (
-	ariga.io/atlas v0.29.0 // indirect
+	ariga.io/atlas v0.29.1 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.7 // indirect
 	github.com/go-openapi/inflect v0.21.0 // indirect
-	github.com/go-telegram/bot v1.11.1
+	github.com/go-telegram/bot v1.12.0
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
@@ -66,11 +66,11 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/mod v0.22.0 // indirect
-	golang.org/x/net v0.32.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/term v0.27.0
 	golang.org/x/text v0.21.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241209162323-e6fa225c2576 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241216192217-9240e9c98484 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	modernc.org/gc/v3 v3.0.0-20241213165251-3bc300f6d0c9 // indirect
 	modernc.org/libc v1.61.4 // indirect

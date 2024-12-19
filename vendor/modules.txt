@@ -1,4 +1,4 @@
-# ariga.io/atlas v0.29.0
+# ariga.io/atlas v0.29.1
 ## explicit; go 1.22.7
 ariga.io/atlas/schemahcl
 ariga.io/atlas/sql/internal/specutil
@@ -36,7 +36,7 @@ github.com/apparentlymart/go-textseg/v15/textseg
 # github.com/bmatcuk/doublestar v1.3.4
 ## explicit; go 1.12
 github.com/bmatcuk/doublestar
-# github.com/c2micro/c2mshr v0.0.0-20241219163425-87894c8880e2
+# github.com/c2micro/c2mshr v0.0.0-20241219175938-7764c293ddfb
 ## explicit; go 1.22.4
 github.com/c2micro/c2mshr/defaults
 github.com/c2micro/c2mshr/proto/gen/common/v1
@@ -81,7 +81,7 @@ github.com/go-playground/universal-translator
 # github.com/go-playground/validator/v10 v10.23.0
 ## explicit; go 1.18
 github.com/go-playground/validator/v10
-# github.com/go-telegram/bot v1.11.1
+# github.com/go-telegram/bot v1.12.0
 ## explicit; go 1.18
 github.com/go-telegram/bot
 github.com/go-telegram/bot/models
@@ -205,13 +205,13 @@ go.uber.org/zap/zapcore
 # golang.org/x/crypto v0.31.0
 ## explicit; go 1.20
 golang.org/x/crypto/sha3
-# golang.org/x/exp v0.0.0-20231108232855-2478ac86f678
-## explicit; go 1.20
+# golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67
+## explicit; go 1.22.0
 golang.org/x/exp/constraints
 # golang.org/x/mod v0.22.0
 ## explicit; go 1.22.0
 golang.org/x/mod/semver
-# golang.org/x/net v0.32.0
+# golang.org/x/net v0.33.0
 ## explicit; go 1.18
 golang.org/x/net/html
 golang.org/x/net/html/atom
@@ -243,12 +243,13 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
-# golang.org/x/tools v0.24.0
-## explicit; go 1.19
+# golang.org/x/tools v0.28.0
+## explicit; go 1.22.0
 golang.org/x/tools/cmd/stringer
 golang.org/x/tools/go/gcexportdata
 golang.org/x/tools/go/packages
 golang.org/x/tools/go/types/objectpath
+golang.org/x/tools/go/types/typeutil
 golang.org/x/tools/internal/aliases
 golang.org/x/tools/internal/event
 golang.org/x/tools/internal/event/core
@@ -259,13 +260,13 @@ golang.org/x/tools/internal/gocommand
 golang.org/x/tools/internal/packagesinternal
 golang.org/x/tools/internal/pkgbits
 golang.org/x/tools/internal/stdlib
-golang.org/x/tools/internal/tokeninternal
+golang.org/x/tools/internal/typeparams
 golang.org/x/tools/internal/typesinternal
 golang.org/x/tools/internal/versions
-# google.golang.org/genproto/googleapis/rpc v0.0.0-20241209162323-e6fa225c2576
+# google.golang.org/genproto/googleapis/rpc v0.0.0-20241216192217-9240e9c98484
 ## explicit; go 1.21
 google.golang.org/genproto/googleapis/rpc/status
-# google.golang.org/grpc v1.69.0
+# google.golang.org/grpc v1.69.2
 ## explicit; go 1.22
 google.golang.org/grpc
 google.golang.org/grpc/attributes
@@ -324,7 +325,7 @@ google.golang.org/grpc/serviceconfig
 google.golang.org/grpc/stats
 google.golang.org/grpc/status
 google.golang.org/grpc/tap
-# google.golang.org/protobuf v1.35.2
+# google.golang.org/protobuf v1.36.0
 ## explicit; go 1.21
 google.golang.org/protobuf/encoding/protojson
 google.golang.org/protobuf/encoding/prototext
@@ -346,6 +347,7 @@ google.golang.org/protobuf/internal/genid
 google.golang.org/protobuf/internal/impl
 google.golang.org/protobuf/internal/order
 google.golang.org/protobuf/internal/pragma
+google.golang.org/protobuf/internal/protolazy
 google.golang.org/protobuf/internal/set
 google.golang.org/protobuf/internal/strs
 google.golang.org/protobuf/internal/version
@@ -399,7 +401,7 @@ modernc.org/mathutil
 # modernc.org/memory v1.8.0
 ## explicit; go 1.18
 modernc.org/memory
-# modernc.org/sqlite v1.34.2
+# modernc.org/sqlite v1.34.3
 ## explicit; go 1.21
 modernc.org/sqlite
 modernc.org/sqlite/lib
